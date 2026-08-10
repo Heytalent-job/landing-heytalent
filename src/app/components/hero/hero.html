@@ -1,30 +1,37 @@
-<section class="hero" id="inicio">
-  <p class="hero-badge"><span class="badge-dot"></span>Comunidad de talento 2026 · Perú</p>
+<section class="hero">
+  <div class="hero__blob hero__blob--left blob" aria-hidden="true"></div>
+  <div class="hero__blob hero__blob--right blob" aria-hidden="true"></div>
 
-  <h1>Conectamos <em>talento</em><br />con oportunidades<br />reales</h1>
+  <div class="hero__inner container">
+    <div>
+      <span class="hero__eyebrow">{{ hero.eyebrow }}</span>
+      <h1 class="hero__title">{{ hero.title }}</h1>
+      <p class="hero__subtitle">{{ hero.subtitle }}</p>
 
-  <p class="lead">
-    Impulsamos tu crecimiento profesional con mentorías, workshops y una comunidad activa para
-    jóvenes peruanos.
-  </p>
-
-  <div class="hero-ctas">
-    <a href="#inscripcion" class="btn-primary">Únete a la comunidad ↗</a>
-    <a href="#beneficios" class="btn-secondary">Ver servicios ↓</a>
-  </div>
-
-  <div class="stats-grid">
-    @for (stat of stats; track stat.label) {
-      <div class="stat-card">
-        <div class="stat-num">{{ stat.value }}</div>
-        <div class="stat-label">{{ stat.label }}</div>
+      <div class="search shadow-soft">
+        <div class="search__field">
+          <app-icon class="search__icon" name="search" />
+          <input
+            class="search__input"
+            type="search"
+            [placeholder]="hero.searchPlaceholder"
+            [attr.aria-label]="hero.searchPlaceholder"
+            [value]="query()"
+            (input)="onInput($event)"
+          />
+        </div>
+        <a class="btn btn--primary search__submit" [href]="searchHref">Buscar empleos</a>
       </div>
-    }
+
+      <div class="hero__actions">
+        <a class="btn btn--secondary btn--pill" href="/cuenta">Crear cuenta</a>
+        <a class="btn btn--on-hero btn--pill" href="/empresas">Soy empresa</a>
+      </div>
+    </div>
+
+    <div class="hero__art">
+      <div class="hero__art-blob blob" aria-hidden="true"></div>
+      <img class="hero__logo shadow-soft" [src]="brand.logo" [alt]="'Logo de ' + brand.name" />
+    </div>
   </div>
 </section>
-
-<div class="img-strip">
-  @for (image of images; track image.src) {
-    <img [src]="image.src" [alt]="image.alt" loading="lazy" decoding="async" />
-  }
-</div>

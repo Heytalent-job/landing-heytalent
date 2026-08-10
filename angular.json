@@ -3,38 +3,13 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "analytics": "e687cc51-3bef-4505-95a7-31117d923c4a"
+    "analytics": "68908d54-e59e-401e-9f20-8cb0bd840c1f"
   },
   "newProjectRoot": "projects",
   "projects": {
     "heytalent": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:class": {
-          "skipTests": true
-        },
-        "@schematics/angular:component": {
-          "skipTests": true
-        },
-        "@schematics/angular:directive": {
-          "skipTests": true
-        },
-        "@schematics/angular:guard": {
-          "skipTests": true
-        },
-        "@schematics/angular:interceptor": {
-          "skipTests": true
-        },
-        "@schematics/angular:pipe": {
-          "skipTests": true
-        },
-        "@schematics/angular:resolver": {
-          "skipTests": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -50,7 +25,9 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"]
+            "styles": [
+              "src/styles.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,6 +64,9 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
         }
       }
     }

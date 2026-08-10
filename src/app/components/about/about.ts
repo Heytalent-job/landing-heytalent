@@ -1,13 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ABOUT_CARDS, PILLARS } from '../../data/site-content';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Icon } from '../../shared/icon/icon';
+import { ABOUT, ABOUT_CARDS, ABOUT_STATS, CONTACT } from '../../data/site-content';
 
 @Component({
   selector: 'app-about',
+  imports: [Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
 export class About {
+  protected readonly about = ABOUT;
+  protected readonly stats = ABOUT_STATS;
   protected readonly cards = ABOUT_CARDS;
-  protected readonly pillars = PILLARS;
+  protected readonly contact = CONTACT;
 }

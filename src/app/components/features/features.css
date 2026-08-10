@@ -1,0 +1,38 @@
+.features {
+  padding-block: 3.5rem;
+  background: var(--secondary-40);
+}
+
+.features__grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.feature {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--card);
+}
+
+.feature__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--primary);
+}
+
+.feature__name {
+  margin-top: 0.75rem;
+}
+
+.feature__text {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+@media (min-width: 640px) {
+  .features__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

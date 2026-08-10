@@ -1,33 +1,44 @@
-<nav>
-  <a href="#inicio" class="logo-wrap" aria-label="HeyTalent — ir al inicio">
-    <app-logo />
-  </a>
+<header class="header">
+  <div class="header__bar container">
+    <a class="brand" href="/">
+      <img class="brand__logo shadow-card" [src]="brand.logo" [alt]="'Logo de ' + brand.name" />
+      <span class="brand__name">{{ brand.name }}</span>
+    </a>
 
-  <div class="nav-links">
-    @for (link of links; track link.fragment) {
-      <a [href]="'#' + link.fragment">{{ link.label }}</a>
-    }
-    <a href="#inscripcion" class="btn-nav">Únete ahora</a>
+    <nav class="nav" aria-label="Principal">
+      @for (link of navLinks; track link.href) {
+        <a class="nav__link" [href]="link.href">{{ link.label }}</a>
+      }
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--ghost btn--pill" href="/cuenta">Iniciar sesión</a>
+      <a class="btn btn--primary btn--pill shadow-soft" href="/cuenta">Registrarse</a>
+    </div>
+
+    <button
+      class="header__toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="menu-movil"
+      aria-label="Abrir menú"
+      (click)="toggleMenu()"
+    >
+      <app-icon [name]="menuOpen() ? 'x' : 'menu'" />
+    </button>
   </div>
 
-  <button
-    type="button"
-    class="hamburger"
-    [class.open]="menuOpen()"
-    (click)="toggleMenu()"
-    [attr.aria-expanded]="menuOpen()"
-    aria-controls="mobile-menu"
-    aria-label="Abrir menú de navegación"
-  >
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-@if (menuOpen()) {
-  <div class="mobile-menu" id="mobile-menu">
-    @for (link of links; track link.fragment) {
-      <a [href]="'#' + link.fragment" (click)="closeMenu()">{{ link.label }}</a>
-    }
-    <a href="#inscripcion" class="btn-mob" (click)="closeMenu()">Únete ahora ↗</a>
-  </div>
-}
+  @if (menuOpen()) {
+    <div class="menu" id="menu-movil">
+      <nav class="menu__links" aria-label="Principal (móvil)">
+        @for (link of navLinks; track link.href) {
+          <a class="nav__link" [href]="link.href">{{ link.label }}</a>
+        }
+      </nav>
+      <div class="menu__actions">
+        <a class="btn btn--ghost btn--pill" href="/cuenta">Iniciar sesión</a>
+        <a class="btn btn--primary btn--pill shadow-soft" href="/cuenta">Registrarse</a>
+      </div>
+    </div>
+  }
+</header>

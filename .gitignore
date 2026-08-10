@@ -8,16 +8,12 @@
 
 # Node
 /node_modules
-npm-debug.log*
-yarn-error.log*
-yarn-debug.log*
-pnpm-debug.log*
-*.log
+npm-debug.log
+yarn-error.log
 
-# Variables de entorno / secretos
-.env
-.env.*
-!.env.example
+# Scraper de referencia (Puppeteer + material regenerable)
+/tools/scraper/node_modules
+/tools/scraper/out
 
 # IDEs and editors
 .idea/
@@ -46,10 +42,7 @@ pnpm-debug.log*
 testem.log
 /typings
 __screenshots__/
-*.tsbuildinfo
 
 # System files
 .DS_Store
 Thumbs.db
-ehthumbs.db
-desktop.ini

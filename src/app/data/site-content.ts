@@ -1,239 +1,188 @@
 import { IconName } from '../shared/icon/icon';
 
 export interface NavLink {
-  readonly label: string;
-  readonly fragment: string;
+  label: string;
+  href: string;
+}
+
+export interface CardItem {
+  icon: IconName;
+  title: string;
+  description: string;
+  href?: string;
+}
+
+export interface PhotoCard {
+  image: string;
+  title: string;
+  description: string;
 }
 
 export interface Stat {
-  readonly value: string;
-  readonly label: string;
+  value: string;
+  label: string;
 }
 
-export interface StripImage {
-  readonly src: string;
-  readonly alt: string;
+export interface FooterColumn {
+  title: string;
+  links: NavLink[];
 }
 
-export interface AboutCard {
-  readonly title: string;
-  readonly body: string;
-  readonly accent: string;
-}
+export const BRAND = {
+  name: 'Hey Talent',
+  logo: 'images/heytalent-logo.png',
+  tagline: 'Networking y búsqueda de empleo para talento joven: conecta, postula y crece.',
+} as const;
 
-export interface Pillar {
-  readonly icon: string;
-  readonly title: string;
-  readonly body: string;
-}
-
-export interface Service {
-  readonly icon: IconName;
-  readonly title: string;
-  readonly body: string;
-  readonly featured?: boolean;
-}
-
-export interface CheckItem {
-  readonly lead?: string;
-  readonly text: string;
-}
-
-export interface StoryBlock {
-  readonly title: string;
-  readonly body: string;
-  readonly items: readonly CheckItem[];
-  readonly image: StripImage;
-  readonly imageFirst: boolean;
-}
-
-export interface Testimonial {
-  readonly quote: string;
-  readonly name: string;
-  readonly initials: string;
-  readonly meta: string;
-  readonly featured?: boolean;
-}
-
-export const WHATSAPP_URL = 'https://chat.whatsapp.com/Jyj3Urt0JZWAqibVCJ4pT5';
-export const LINKEDIN_URL = 'https://linkedin.com/company/heytalentoficial';
-export const PHONE = '962366275';
-
-export const NAV_LINKS: readonly NavLink[] = [
-  { label: 'Nosotros', fragment: 'nosotros' },
-  { label: 'Servicios', fragment: 'beneficios' },
-  { label: '¿Cómo funciona?', fragment: 'como' },
-  { label: 'Opiniones', fragment: 'testimonios' },
+export const NAV_LINKS: NavLink[] = [
+  { label: 'Buscar Empleos', href: '/empleos' },
+  { label: 'Mi Cuenta', href: '/cuenta' },
+  { label: 'Empresas', href: '/empresas' },
+  { label: 'Recursos', href: '/recursos' },
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Soporte', href: '/soporte' },
 ];
 
-export const STATS: readonly Stat[] = [
-  { value: '700+', label: 'Talentos activos' },
-  { value: '50+', label: 'Empresas aliadas' },
-  { value: '98%', label: 'Satisfacción' },
-  { value: '100%', label: 'Gratuito' },
-];
+export const HERO = {
+  eyebrow: 'Networking + Empleo',
+  title: 'Hey Talent: tu red para conseguir el trabajo que quieres',
+  subtitle:
+    'Prácticas, part time, full time y remoto en un solo lugar. Crea tu perfil, arma tu CV y conecta con empresas que buscan talento como el tuyo.',
+  searchPlaceholder: '¿Qué empleo buscas?',
+} as const;
 
-export const STRIP_IMAGES: readonly StripImage[] = [
+export const CATEGORIES: CardItem[] = [
   {
-    src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=200&fit=crop&auto=format',
-    alt: 'Jóvenes profesionales en reunión',
+    icon: 'graduation-cap',
+    title: 'Prácticas',
+    description: 'Empieza tu carrera con acompañamiento.',
+    href: '/empleos',
   },
   {
-    src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=200&fit=crop&auto=format',
-    alt: 'Workshop de empleabilidad',
+    icon: 'briefcase-business',
+    title: 'Part / Full Time',
+    description: 'Jornadas que se adaptan a tu vida.',
+    href: '/empleos',
   },
   {
-    src: 'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=400&h=200&fit=crop&auto=format',
-    alt: 'Mentoría personalizada',
+    icon: 'laptop',
+    title: 'Remoto',
+    description: 'Trabaja desde cualquier lugar del país.',
+    href: '/empleos',
   },
 ];
 
-export const ABOUT_CARDS: readonly AboutCard[] = [
+export const FEATURES: CardItem[] = [
   {
-    title: 'MISIÓN',
-    body: 'Impulsar el desarrollo profesional de jóvenes peruanos fortaleciendo su empleabilidad y marca personal para que accedan a oportunidades laborales de calidad en Perú y Latinoamérica.',
-    accent: 'var(--purple)',
+    icon: 'search',
+    title: 'Búsqueda con filtros',
+    description: 'Área, ciudad, modalidad, salario y más.',
   },
   {
-    title: 'VISIÓN',
-    body: 'Ser la comunidad de referencia en Perú para el desarrollo profesional juvenil, donde cada joven construya su camino con acompañamiento real y acceso igualitario.',
-    accent: 'var(--purple-light)',
-  },
-];
-
-export const PILLARS: readonly Pillar[] = [
-  {
-    icon: '🎯',
-    title: 'Enfoque práctico',
-    body: 'Aprendizaje aplicado al mundo laboral real de hoy',
+    icon: 'users',
+    title: 'Networking real',
+    description: 'Conecta con reclutadores y otros postulantes.',
   },
   {
-    icon: '🤝',
-    title: 'Comunidad activa',
-    body: 'Red de jóvenes y mentores en constante movimiento',
-  },
-  {
-    icon: '🆓',
-    title: 'Totalmente gratuito',
-    body: 'Sin barreras económicas para ningún joven',
+    icon: 'rocket',
+    title: 'Postula en un clic',
+    description: 'Con tu CV guardado y perfil completo.',
   },
 ];
 
-export const SERVICES: readonly Service[] = [
+export const ABOUT = {
+  eyebrow: 'Quiénes somos',
+  title: 'Impulsamos el desarrollo profesional del talento joven',
+  body: 'Hey Talent impulsa el desarrollo profesional de jóvenes y profesionales, fortaleciendo su empleabilidad y marca personal a través de formación práctica, mentorías y experiencias alineadas al nuevo panorama laboral.',
+  link: { label: 'Conoce más sobre nosotros →', href: '/nosotros' },
+} as const;
+
+export const ABOUT_STATS: Stat[] = [
+  { value: '2025', label: 'Año de fundación' },
+  { value: 'Perú', label: 'Base de operaciones' },
+  { value: '+1.8k%', label: 'Crecimiento del equipo' },
+];
+
+export const ABOUT_CARDS: PhotoCard[] = [
   {
-    icon: 'user',
-    title: 'Mentorías 1:1',
-    body: 'Sesiones personalizadas con profesionales activos del mercado peruano e internacional.',
+    image: 'images/comunidad-taller.jpg',
+    title: 'Formación práctica',
+    description: 'Programas alineados al nuevo panorama laboral para fortalecer tu empleabilidad.',
   },
   {
-    icon: 'calendar',
-    title: 'Workshops',
-    body: 'Talleres prácticos sobre LinkedIn, marca personal y networking para destacar ante reclutadores.',
-    featured: true,
+    image: 'images/mentoria-cv.jpg',
+    title: 'Mentorías y asesorías',
+    description: 'Acompañamiento personalizado en CV, entrevistas y plan de carrera.',
   },
   {
-    icon: 'chat',
-    title: 'Comunidad WhatsApp',
-    body: 'Grupo activo con oportunidades laborales, recursos y compañeros que impulsan tu crecimiento.',
-  },
-  {
-    icon: 'linkedin',
-    title: 'Optimización LinkedIn',
-    body: 'Aprende a construir un perfil que atraiga reclutadores y genere oportunidades de forma orgánica.',
-  },
-  {
-    icon: 'trending',
+    image: 'images/networking-evento.jpg',
     title: 'Marca personal',
-    body: 'Estrategias para diferenciarte y posicionarte como referente en tu área de especialización.',
-  },
-  {
-    icon: 'video',
-    title: 'Contenido YouTube',
-    body: 'Talleres grabados, entrevistas con profesionales y guías prácticas disponibles cuando quieras.',
+    description: 'Eventos y comunidad para hacerte visible y potenciar tu presencia profesional.',
   },
 ];
 
-export const STORY_BLOCKS: readonly StoryBlock[] = [
+export const CONTACT = {
+  whatsapp: 'https://chat.whatsapp.com/Jyj3Urt0JZWAqibVCJ4pT5',
+  linkedin: 'https://www.linkedin.com/company/heytalentoficial/',
+  phoneHref: 'tel:+51962366275',
+  phoneLabel: 'Asesorías: 962 366 275',
+} as const;
+
+export const FOOTER_COLUMNS: FooterColumn[] = [
   {
-    title: 'Desde el primer día te acompañamos',
-    body: 'No importa en qué punto de tu carrera estés. HeyTalent te guía desde construir tu primera marca personal hasta conectar con empresas que valoran tu potencial.',
-    items: [
-      {
-        lead: 'Inscríbete gratis',
-        text: '— completa el formulario y nos ponemos en contacto contigo en 48h',
-      },
-      {
-        lead: 'Participa en workshops',
-        text: '— talleres en vivo y acceso a grabaciones cuando quieras',
-      },
-      {
-        lead: 'Conecta y crece',
-        text: '— accede a oportunidades laborales reales a través de la comunidad',
-      },
+    title: 'Buscar Empleos',
+    links: [
+      { label: 'Prácticas', href: '/empleos' },
+      { label: 'Trabajo Part Time', href: '/empleos' },
+      { label: 'Trabajo Full Time', href: '/empleos' },
+      { label: 'Trabajo Remoto', href: '/empleos' },
+      { label: 'Filtros', href: '/empleos' },
     ],
-    image: {
-      src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&auto=format',
-      alt: 'Jóvenes en workshop de empleabilidad',
-    },
-    imageFirst: true,
   },
   {
-    title: 'El mercado laboral juvenil en Perú necesita soluciones reales',
-    body: 'El 74.9% de los jóvenes trabaja en informalidad y la falta de experiencia es la barrera #1 para acceder al primer empleo formal. HeyTalent existe para cambiar eso.',
-    items: [
-      { text: '15.4% de desempleo juvenil en Lima Metropolitana en 2025' },
-      { text: '47.7% no puede encontrar empleo por falta de experiencia práctica' },
-      { text: 'HeyTalent brinda las herramientas que la universidad no enseña' },
+    title: 'Mi Cuenta',
+    links: [
+      { label: 'Iniciar Sesión', href: '/cuenta' },
+      { label: 'Registrarse', href: '/cuenta' },
+      { label: 'Perfil', href: '/cuenta' },
+      { label: 'CV', href: '/cuenta' },
+      { label: 'Postulaciones', href: '/cuenta' },
+      { label: 'Favoritos', href: '/cuenta' },
     ],
-    image: {
-      src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop&auto=format',
-      alt: 'Joven profesional trabajando en laptop',
-    },
-    imageFirst: false,
-  },
-];
-
-export const TESTIMONIALS: readonly Testimonial[] = [
-  {
-    quote:
-      'Optimicé mi perfil de LinkedIn y en menos de un mes recibí tres llamadas de reclutadores. Fue un cambio total para mi carrera.',
-    name: 'Andrea M.',
-    initials: 'AM',
-    meta: 'Administración · PUCP',
   },
   {
-    quote:
-      'El workshop de networking fue lo mejor que me pasó en mi búsqueda laboral. Aprendí a conectar con personas clave de forma genuina.',
-    name: 'Carlos R.',
-    initials: 'CR',
-    meta: 'Ing. Sistemas · UNI',
-    featured: true,
+    title: 'Empresas',
+    links: [
+      { label: 'Publicar Oferta', href: '/empresas' },
+      { label: 'Buscar Candidatos', href: '/empresas' },
+      { label: 'Gestión de Ofertas', href: '/empresas' },
+      { label: 'Dashboard', href: '/empresas' },
+    ],
   },
   {
-    quote:
-      'La mentoría 1:1 me ayudó a entender qué quería en mi carrera. Mi mentora fue increíblemente honesta y el acompañamiento fue real.',
-    name: 'Lucía P.',
-    initials: 'LP',
-    meta: 'Psicología · UPC',
+    title: 'Recursos',
+    links: [
+      { label: 'Blog', href: '/recursos' },
+      { label: 'Guías', href: '/recursos' },
+      { label: 'Consejos Laborales', href: '/recursos' },
+      { label: 'Preparación para entrevistas', href: '/recursos' },
+      { label: 'Plantillas de CV', href: '/recursos' },
+    ],
   },
-];
-
-export const UNIVERSITIES: readonly string[] = [
-  'PUCP',
-  'UPC',
-  'UNI',
-  'UNMSM',
-  'UP',
-  'USIL',
-  'ESAN',
-  'ULIMA',
-  'Otra',
-];
-
-export const INTERESTS: readonly string[] = [
-  'Mentorías personalizadas',
-  'Workshops y talleres',
-  'Optimización de LinkedIn',
-  'Comunidad y networking',
-  'Todo lo anterior',
+  {
+    title: 'Nosotros',
+    links: [
+      { label: 'Quiénes somos', href: '/nosotros' },
+      { label: 'Misión', href: '/nosotros' },
+      { label: 'Contacto', href: '/nosotros' },
+    ],
+  },
+  {
+    title: 'Soporte',
+    links: [
+      { label: 'Redes Sociales', href: '/soporte' },
+      { label: 'Preguntas Frecuentes', href: '/soporte' },
+      { label: 'Ayuda', href: '/soporte' },
+    ],
+  },
 ];

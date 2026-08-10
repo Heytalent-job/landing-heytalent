@@ -1,35 +1,28 @@
-<footer>
-  <div class="footer-inner">
-    <div class="brand">
-      <app-logo [width]="130" [radius]="14" />
-      <p>
-        Impulsando el desarrollo profesional de jóvenes peruanos con mentorías, comunidad y
-        formación práctica. Organización sin fines de lucro.
-      </p>
-    </div>
-
-    <div>
-      <p class="col-title">NAVEGACIÓN</p>
-      <div class="footer-links">
-        @for (link of links; track link.fragment) {
-          <a [href]="'#' + link.fragment">{{ link.label }}</a>
-        }
-        <a href="#inscripcion">Inscribirse</a>
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">
+          <img class="footer__logo" [src]="brand.logo" [alt]="brand.name" />
+          <span class="footer__name">{{ brand.name }}</span>
+        </div>
+        <p class="footer__tagline">{{ brand.tagline }}</p>
       </div>
+
+      @for (column of columns; track column.title) {
+        <div>
+          <h3 class="footer__heading">{{ column.title }}</h3>
+          <ul class="footer__links">
+            @for (link of column.links; track link.label) {
+              <li><a class="footer__link" [href]="link.href">{{ link.label }}</a></li>
+            }
+          </ul>
+        </div>
+      }
     </div>
 
-    <div>
-      <p class="col-title">CONTACTO</p>
-      <div class="footer-links">
-        <a [href]="whatsappUrl" target="_blank" rel="noopener" class="wa"> WhatsApp comunidad ↗ </a>
-        <a [href]="'tel:' + phone">962 366 275 · Asesorías</a>
-        <a [href]="linkedinUrl" target="_blank" rel="noopener" class="li">LinkedIn ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <span>© {{ year }} HeyTalent Perú. Todos los derechos reservados.</span>
-    <span>Hecho con propósito para jóvenes peruanos</span>
+    <p class="footer__legal">
+      © {{ year }} {{ brand.name }}. Hecho para conectar talento y oportunidades.
+    </p>
   </div>
 </footer>

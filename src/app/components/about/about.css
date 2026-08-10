@@ -1,75 +1,139 @@
-.about-grid {
+.about {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 40px;
+  gap: 2.5rem;
 }
 
-.about-card {
+.about__title {
+  margin-top: 0.5rem;
+}
+
+.about__body {
+  margin-top: 1rem;
+  color: var(--muted-foreground);
+}
+
+/* Cifras */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+}
+
+.stat {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: var(--secondary-40);
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.stat__label {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Tarjetas con foto */
+.about__cards {
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+}
+
+.pcard {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
   background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 28px;
-  border-top: 3px solid var(--purple);
-  text-align: left;
 }
 
-.about-card h3 {
-  font-size: 11px;
-  font-weight: 800;
-  color: var(--purple-light);
-  letter-spacing: 0.1em;
-  margin-bottom: 10px;
+.pcard__image {
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.about-card p {
-  font-size: 14px;
-  color: var(--gray);
-  line-height: 1.75;
+.pcard:hover .pcard__image {
+  transform: scale(1.05);
 }
 
-.pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 16px;
+.pcard__body {
+  padding: 1.5rem;
 }
 
-.pillar {
-  background: var(--bg3);
-  border-radius: 14px;
-  padding: 18px;
-  text-align: center;
+.pcard__text {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
 }
 
-.pillar-icon {
-  font-size: 28px;
-  margin-bottom: 8px;
+.about__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-underline-offset: 4px;
 }
 
-.pillar h4 {
-  font-size: 13px;
-  font-weight: 800;
-  margin-bottom: 4px;
+.about__link:hover {
+  text-decoration: underline;
 }
 
-.pillar p {
-  font-size: 12px;
-  color: var(--gray);
-}
-
-@media (max-width: 768px) {
-  .about-grid {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  .pcard__image {
+    transition: none;
   }
-
-  .pillars {
-    grid-template-columns: 1fr 1fr;
+  .pcard:hover .pcard__image {
+    transform: none;
   }
 }
 
-@media (max-width: 480px) {
-  .pillars {
-    grid-template-columns: 1fr;
+@media (min-width: 640px) {
+  .about__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about__link {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+  }
+
+  .about__cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about__link {
+    grid-column: span 1;
+  }
+
+  /* En escritorio la tarjeta pasa a fila: imagen fija a la izquierda */
+  .pcard {
+    display: flex;
+    align-items: center;
+  }
+
+  .pcard__image {
+    width: 11rem;
+    height: 9rem;
+    flex-shrink: 0;
   }
 }

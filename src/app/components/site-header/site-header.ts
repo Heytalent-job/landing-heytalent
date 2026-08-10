@@ -1,23 +1,22 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { Logo } from '../../shared/logo/logo';
-import { NAV_LINKS } from '../../data/site-content';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Icon } from '../../shared/icon/icon';
+import { BRAND, NAV_LINKS } from '../../data/site-content';
 
 @Component({
   selector: 'app-site-header',
+  imports: [Icon],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Logo],
   templateUrl: './site-header.html',
   styleUrl: './site-header.css',
 })
 export class SiteHeader {
-  protected readonly links = NAV_LINKS;
+  protected readonly brand = BRAND;
+  protected readonly navLinks = NAV_LINKS;
+
+  /** El menú compacto sólo existe por debajo de `lg`. */
   protected readonly menuOpen = signal(false);
 
   protected toggleMenu(): void {
     this.menuOpen.update((open) => !open);
-  }
-
-  protected closeMenu(): void {
-    this.menuOpen.set(false);
   }
 }
