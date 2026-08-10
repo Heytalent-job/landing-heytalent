@@ -1,0 +1,22 @@
+<section class="section" id="beneficios">
+  <div class="section-inner centered">
+    <span class="section-tag">Servicios</span>
+    <h2>¿Qué obtienes al unirte?</h2>
+    <p class="sub">
+      Todo lo que necesitas para posicionarte con éxito en el mercado laboral peruano.
+    </p>
+
+    <div class="benefits-grid">
+      @for (service of services; track service.title) {
+        <article class="benefit-card" [class.featured]="service.featured">
+          @if (service.featured) {
+            <p class="feat-label">MÁS POPULAR</p>
+          }
+          <div class="b-icon"><app-icon [name]="service.icon" /></div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.body }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

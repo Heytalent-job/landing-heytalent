@@ -1,0 +1,87 @@
+.section-head {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.img-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.img-content + .img-content {
+  margin-top: 40px;
+}
+
+/* Second block flips the visual to the right without reordering the DOM,
+   so screen readers and mobile keep the heading-first reading order. */
+.img-content.image-last .visual {
+  order: 2;
+}
+
+.img-content .visual {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  height: 300px;
+}
+
+.text-side h3 {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.text-side p {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.check-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.check-list li strong {
+  color: #fff;
+}
+
+.check-list .ck {
+  width: 20px;
+  height: 20px;
+  background: var(--purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .img-content {
+    grid-template-columns: 1fr;
+  }
+
+  .img-content .visual {
+    height: 220px;
+  }
+
+  .img-content.image-last .visual {
+    order: 0;
+  }
+}

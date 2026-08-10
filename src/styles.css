@@ -1,0 +1,158 @@
+/* Design tokens, base styles and primitives shared across components. */
+
+:root {
+  --purple: #6b63d4;
+  --purple-dark: #4f48a8;
+  --purple-light: #8b84e8;
+  --purple-xlight: #ede9ff;
+  --bg: #0d0b1a;
+  --bg2: #12102a;
+  --bg3: #1a1736;
+  --card: #1e1b3a;
+  --card2: #252245;
+  --white: #fff;
+  --gray: #a09ec0;
+  --gray2: #6b698a;
+  --line: #2a2750;
+  --line-soft: #1a1736;
+  --green: #4ade80;
+  --nav-height: 68px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  font-family: 'Nunito', 'Varela Round', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* SECTION LAYOUT */
+.section {
+  padding: 72px 1.5rem;
+}
+
+.section.alt {
+  background: var(--bg2);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.section-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section-inner.centered {
+  text-align: center;
+}
+
+.section-tag {
+  display: inline-block;
+  background: var(--card);
+  color: var(--purple-light);
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 50px;
+  padding: 5px 16px;
+  margin-bottom: 14px;
+  letter-spacing: 0.06em;
+}
+
+.section h2 {
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 900;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.section p.sub {
+  font-size: 15px;
+  color: var(--gray);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* BUTTONS */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.btn-primary:hover {
+  background: var(--purple-dark);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #3a3760;
+  border-radius: 50px;
+  padding: 13px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn-secondary:hover {
+  border-color: var(--purple-light);
+  color: var(--purple-light);
+}
+
+/* CARD SURFACE */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+/* FOCUS */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--purple-light);
+  outline-offset: 2px;
+}

@@ -1,0 +1,35 @@
+<footer>
+  <div class="footer-inner">
+    <div class="brand">
+      <app-logo [width]="130" [radius]="14" />
+      <p>
+        Impulsando el desarrollo profesional de jóvenes peruanos con mentorías, comunidad y
+        formación práctica. Organización sin fines de lucro.
+      </p>
+    </div>
+
+    <div>
+      <p class="col-title">NAVEGACIÓN</p>
+      <div class="footer-links">
+        @for (link of links; track link.fragment) {
+          <a [href]="'#' + link.fragment">{{ link.label }}</a>
+        }
+        <a href="#inscripcion">Inscribirse</a>
+      </div>
+    </div>
+
+    <div>
+      <p class="col-title">CONTACTO</p>
+      <div class="footer-links">
+        <a [href]="whatsappUrl" target="_blank" rel="noopener" class="wa"> WhatsApp comunidad ↗ </a>
+        <a [href]="'tel:' + phone">962 366 275 · Asesorías</a>
+        <a [href]="linkedinUrl" target="_blank" rel="noopener" class="li">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© {{ year }} HeyTalent Perú. Todos los derechos reservados.</span>
+    <span>Hecho con propósito para jóvenes peruanos</span>
+  </div>
+</footer>

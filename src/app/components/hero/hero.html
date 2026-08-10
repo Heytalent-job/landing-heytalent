@@ -1,0 +1,30 @@
+<section class="hero" id="inicio">
+  <p class="hero-badge"><span class="badge-dot"></span>Comunidad de talento 2026 · Perú</p>
+
+  <h1>Conectamos <em>talento</em><br />con oportunidades<br />reales</h1>
+
+  <p class="lead">
+    Impulsamos tu crecimiento profesional con mentorías, workshops y una comunidad activa para
+    jóvenes peruanos.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#inscripcion" class="btn-primary">Únete a la comunidad ↗</a>
+    <a href="#beneficios" class="btn-secondary">Ver servicios ↓</a>
+  </div>
+
+  <div class="stats-grid">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-card">
+        <div class="stat-num">{{ stat.value }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    }
+  </div>
+</section>
+
+<div class="img-strip">
+  @for (image of images; track image.src) {
+    <img [src]="image.src" [alt]="image.alt" loading="lazy" decoding="async" />
+  }
+</div>

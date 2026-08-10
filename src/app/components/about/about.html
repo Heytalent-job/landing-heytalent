@@ -1,0 +1,29 @@
+<section class="section alt" id="nosotros">
+  <div class="section-inner centered">
+    <span class="section-tag">Sobre nosotros</span>
+    <h2>¿Quiénes somos?</h2>
+    <p class="sub">
+      Somos una organización sin fines de lucro fundada en 2025 para cerrar la brecha entre la
+      formación universitaria y el mercado laboral peruano.
+    </p>
+
+    <div class="about-grid">
+      @for (card of cards; track card.title) {
+        <article class="about-card" [style.border-top-color]="card.accent">
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.body }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="pillars">
+      @for (pillar of pillars; track pillar.title) {
+        <article class="pillar">
+          <div class="pillar-icon" aria-hidden="true">{{ pillar.icon }}</div>
+          <h4>{{ pillar.title }}</h4>
+          <p>{{ pillar.body }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

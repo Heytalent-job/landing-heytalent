@@ -1,0 +1,33 @@
+<nav>
+  <a href="#inicio" class="logo-wrap" aria-label="HeyTalent — ir al inicio">
+    <app-logo />
+  </a>
+
+  <div class="nav-links">
+    @for (link of links; track link.fragment) {
+      <a [href]="'#' + link.fragment">{{ link.label }}</a>
+    }
+    <a href="#inscripcion" class="btn-nav">Únete ahora</a>
+  </div>
+
+  <button
+    type="button"
+    class="hamburger"
+    [class.open]="menuOpen()"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="mobile-menu"
+    aria-label="Abrir menú de navegación"
+  >
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+@if (menuOpen()) {
+  <div class="mobile-menu" id="mobile-menu">
+    @for (link of links; track link.fragment) {
+      <a [href]="'#' + link.fragment" (click)="closeMenu()">{{ link.label }}</a>
+    }
+    <a href="#inscripcion" class="btn-mob" (click)="closeMenu()">Únete ahora ↗</a>
+  </div>
+}
