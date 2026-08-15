@@ -1,3 +1,26 @@
+/* Animación base */
+.animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays escalonados */
+.about__left.animate { transition-delay: 0s; }
+.stat.animate:nth-child(1) { transition-delay: 0.1s; }
+.stat.animate:nth-child(2) { transition-delay: 0.2s; }
+.stat.animate:nth-child(3) { transition-delay: 0.3s; }
+.about__actions.animate { transition-delay: 0.2s; }
+.pcard.animate:nth-child(1) { transition-delay: 0.1s; }
+.pcard.animate:nth-child(2) { transition-delay: 0.25s; }
+.pcard.animate:nth-child(3) { transition-delay: 0.4s; }
+.about__link.animate { transition-delay: 0.5s; }
+
 .about {
   display: grid;
   gap: 2.5rem;
@@ -93,11 +116,32 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .animate {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .pcard__image {
     transition: none;
   }
   .pcard:hover .pcard__image {
     transform: none;
+  }
+}
+
+/* Responsive móvil */
+@media (max-width: 639px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about__actions {
+    flex-direction: column;
+  }
+
+  .about__actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -125,7 +169,6 @@
     grid-column: span 1;
   }
 
-  /* En escritorio la tarjeta pasa a fila: imagen fija a la izquierda */
   .pcard {
     display: flex;
     align-items: center;
