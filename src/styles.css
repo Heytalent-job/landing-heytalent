@@ -1,0 +1,212 @@
+/* ==========================================================================
+   Hey Talent — tokens de diseño y estilos base
+   Paleta y tipografía tomadas del diseño original (OKLCH).
+   ========================================================================== */
+
+:root {
+  --radius: 1.25rem;
+
+  --background: oklch(99% 0.006 285);
+  --foreground: oklch(24% 0.06 285);
+
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(24% 0.06 285);
+
+  --primary: oklch(55% 0.21 279);
+  --primary-foreground: oklch(99% 0.005 285);
+  --primary-soft: oklch(93% 0.045 282);
+
+  --secondary: oklch(95% 0.03 283);
+  --secondary-foreground: oklch(35% 0.13 281);
+
+  --muted: oklch(96% 0.014 285);
+  --muted-foreground: oklch(52% 0.045 283);
+
+  --accent: oklch(86% 0.13 92);
+  --accent-foreground: oklch(30% 0.09 70);
+
+  --border: oklch(90% 0.025 285);
+  --input: oklch(90% 0.025 285);
+  --ring: oklch(55% 0.21 279);
+
+  /* Variantes con alfa usadas por el diseño (equivalentes a `color/40` de Tailwind) */
+  --secondary-40: oklch(95% 0.03 283 / 0.4);
+  --border-60: oklch(90% 0.025 285 / 0.6);
+  --background-85: oklch(99% 0.006 285 / 0.85);
+
+  --gradient-hero: linear-gradient(150deg, oklch(55% 0.21 279), oklch(66% 0.17 292));
+  --shadow-soft: 0 18px 40px -22px oklch(55% 0.21 279 / 0.45);
+  --shadow-card: 0 10px 24px -18px oklch(35% 0.13 281 / 0.55);
+
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Baloo 2', ui-rounded, system-ui, sans-serif;
+
+  /* Ritmo horizontal compartido por todas las secciones */
+  --container: 72rem;
+  --gutter: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--secondary-foreground);
+}
+
+h1 { font-size: 2.25rem; line-height: 1.25; }
+h2 { font-size: 1.875rem; line-height: 1.2; }
+h3 { font-size: 1.125rem; line-height: 1.55; }
+
+p { margin: 0; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  h1 { font-size: 3rem; }
+}
+
+/* --------------------------------------------------------------------------
+   Utilidades compartidas
+   -------------------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Forma orgánica del fondo del hero */
+.blob {
+  border-radius: 62% 38% 55% 45% / 48% 55% 45% 52%;
+}
+
+.section {
+  padding-block: 3.5rem;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  color: var(--primary);
+}
+
+/* Botones — replican las variantes shadcn del original */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.25rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+/* El icono se dimensiona desde su host, no desde el <svg> interno:
+   los estilos del componente se inyectan después y ganarían por orden. */
+.btn app-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.btn--pill { border-radius: 9999px; }
+
+.btn--primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
+}
+.btn--primary:hover { background: oklch(55% 0.21 279 / 0.9); }
+
+.btn--secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  box-shadow: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
+}
+.btn--secondary:hover { background: oklch(95% 0.03 283 / 0.8); }
+
+.btn--outline {
+  border-color: var(--input);
+  background: var(--background);
+  box-shadow: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
+}
+.btn--outline:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.btn--ghost:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* Variante sobre el degradado del hero */
+.btn--on-hero {
+  border-color: oklch(99% 0.005 285 / 0.4);
+  background: transparent;
+  color: var(--primary-foreground);
+}
+.btn--on-hero:hover { background: oklch(99% 0.005 285 / 0.1); }
+
+.shadow-soft { box-shadow: var(--shadow-soft); }
+.shadow-card { box-shadow: var(--shadow-card); }

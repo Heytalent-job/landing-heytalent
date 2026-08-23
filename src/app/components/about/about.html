@@ -1,0 +1,46 @@
+<section class="section container">
+  <div class="about">
+    <div class="about__left animate">
+      <p class="eyebrow">{{ about.eyebrow }}</p>
+      <h2 class="about__title">{{ about.title }}</h2>
+      <p class="about__body">{{ about.body }}</p>
+
+      <dl class="stats">
+        @for (stat of stats; track stat.label) {
+          <div class="stat animate">
+            <dt class="stat__value">{{ stat.value }}</dt>
+            <dd class="stat__label">{{ stat.label }}</dd>
+          </div>
+        }
+      </dl>
+
+      <div class="about__actions animate">
+        <a class="btn btn--primary" [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer">
+          <app-icon name="message-circle" />
+          Comunidad de trabajos
+        </a>
+        <a class="btn btn--outline" [href]="contact.linkedin" target="_blank" rel="noopener noreferrer">
+          <app-icon name="linkedin" />
+          Síguenos en LinkedIn
+        </a>
+        <a class="btn btn--ghost" [href]="contact.phoneHref">
+          <app-icon name="phone" />
+          {{ contact.phoneLabel }}
+        </a>
+      </div>
+    </div>
+
+    <div class="about__cards">
+      @for (card of cards; track card.title) {
+        <article class="pcard shadow-card animate">
+          <img class="pcard__image" [src]="card.image" [alt]="card.title" loading="lazy" />
+          <div class="pcard__body">
+            <h3>{{ card.title }}</h3>
+            <p class="pcard__text">{{ card.description }}</p>
+          </div>
+        </article>
+      }
+      <a class="about__link animate" [href]="about.link.href">{{ about.link.label }}</a>
+    </div>
+  </div>
+</section>

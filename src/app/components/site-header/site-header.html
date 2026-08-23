@@ -1,0 +1,44 @@
+<header class="header">
+  <div class="header__bar container">
+    <a class="brand" href="/">
+      <img class="brand__logo shadow-card" [src]="brand.logo" [alt]="'Logo de ' + brand.name" />
+      <span class="brand__name">{{ brand.name }}</span>
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      @for (link of navLinks; track link.href) {
+        <a class="nav__link" [href]="link.href">{{ link.label }}</a>
+      }
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--ghost btn--pill" href="/cuenta">Iniciar sesión</a>
+      <a class="btn btn--primary btn--pill shadow-soft" href="/cuenta">Registrarse</a>
+    </div>
+
+    <button
+      class="header__toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="menu-movil"
+      aria-label="Abrir menú"
+      (click)="toggleMenu()"
+    >
+      <app-icon [name]="menuOpen() ? 'x' : 'menu'" />
+    </button>
+  </div>
+
+  @if (menuOpen()) {
+    <div class="menu" id="menu-movil">
+      <nav class="menu__links" aria-label="Principal (móvil)">
+        @for (link of navLinks; track link.href) {
+          <a class="nav__link" [href]="link.href">{{ link.label }}</a>
+        }
+      </nav>
+      <div class="menu__actions">
+        <a class="btn btn--ghost btn--pill" href="/cuenta">Iniciar sesión</a>
+        <a class="btn btn--primary btn--pill shadow-soft" href="/cuenta">Registrarse</a>
+      </div>
+    </div>
+  }
+</header>

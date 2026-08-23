@@ -1,0 +1,13 @@
+<section class="section container">
+  <h2 class="categories__title">¿Qué buscas hoy?</h2>
+
+  <div class="categories__grid">
+    @for (item of categories; track item.title) {
+      <a class="category shadow-card" [href]="item.href">
+        <app-icon class="category__icon" [name]="item.icon" />
+        <h3 class="category__name">{{ item.title }}</h3>
+        <p class="category__text">{{ item.description }}</p>
+      </a>
+    }
+  </div>
+</section>
