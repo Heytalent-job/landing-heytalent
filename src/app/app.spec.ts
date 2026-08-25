@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { App } from './app';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
+      providers: [provideRouter([])],
     }).compileComponents();
   });
 
@@ -13,10 +15,11 @@ describe('App', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should render the hero headline', () => {
+  it('should render the shared chrome exactly once', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
-    const h1 = fixture.nativeElement.querySelector('h1') as HTMLElement;
-    expect(h1.textContent).toContain('Hey Talent: tu red para conseguir el trabajo que quieres');
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelectorAll('app-site-header').length).toBe(1);
+    expect(el.querySelectorAll('app-site-footer').length).toBe(1);
   });
 });
