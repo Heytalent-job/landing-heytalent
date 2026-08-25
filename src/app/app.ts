@@ -1,3 +1,4 @@
+import { ContactForm } from './components/contact-form/contact-form';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SiteHeader } from './components/site-header/site-header';
 import { Hero } from './components/hero/hero';
@@ -8,7 +9,15 @@ import { SiteFooter } from './components/site-footer/site-footer';
 
 @Component({
   selector: 'app-root',
-  imports: [SiteHeader, Hero, Categories, Features, About, SiteFooter],
+  imports: [
+  SiteHeader,
+  Hero,
+  Categories,
+  Features,
+  About,
+  ContactForm,
+  SiteFooter
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html',
   styleUrl: './app.css',
