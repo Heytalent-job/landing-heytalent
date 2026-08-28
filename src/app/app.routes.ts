@@ -15,5 +15,6 @@ export const routes: Routes = [
   {
     path: '**',
     component: NotFound,
+    title: 'Página no encontrada | Hey Talent',
   },
 ];
