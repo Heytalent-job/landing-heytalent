@@ -25,7 +25,7 @@ export class AnalyticsService {
    * @param path - Page path
    */
   pageView(path: string): void {
-    gtag('config', 'G-157210631310', {
+    gtag('config', 'G-XXXXXXXXXX', {
       page_path: path,
     });
   }
