@@ -30,7 +30,7 @@ export interface FooterColumn {
 
 export const BRAND = {
   name: 'Hey Talent',
-  logo: 'images/heytalent-logo.png',
+  logo: 'images/heytalent-logo.webp',
   tagline: 'Networking y búsqueda de empleo para talento joven: conecta, postula y crece.',
 } as const;
 
@@ -105,17 +105,17 @@ export const ABOUT_STATS: Stat[] = [
 
 export const ABOUT_CARDS: PhotoCard[] = [
   {
-    image: 'images/comunidad-taller.jpg',
+    image: 'images/comunidad-taller.webp',
     title: 'Formación práctica',
     description: 'Programas alineados al nuevo panorama laboral para fortalecer tu empleabilidad.',
   },
   {
-    image: 'images/mentoria-cv.jpg',
+    image: 'images/mentoria-cv.webp',
     title: 'Mentorías y asesorías',
     description: 'Acompañamiento personalizado en CV, entrevistas y plan de carrera.',
   },
   {
-    image: 'images/networking-evento.jpg',
+    image: 'images/networking-evento.webp',
     title: 'Marca personal',
     description: 'Eventos y comunidad para hacerte visible y potenciar tu presencia profesional.',
   },

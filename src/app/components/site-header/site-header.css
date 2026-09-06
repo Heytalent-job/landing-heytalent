@@ -94,6 +94,10 @@
     gap: 0.25rem;
   }
 
+  .nav__link {
+    padding: 0.5rem 0.5rem;
+  }
+
   .header__actions {
     display: flex;
     align-items: center;
@@ -103,5 +107,11 @@
   .header__toggle,
   .menu {
     display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav__link {
+    padding: 0.5rem 0.75rem;
   }
 }
