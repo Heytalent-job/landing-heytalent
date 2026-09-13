@@ -1,19 +1,19 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# Los patrones son relativos a cualquier nivel: aplican igual a la raíz que a apps/* y packages/*.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+dist/
+tmp/
+out-tsc/
+bazel-out/
 
 # Node
-/node_modules
+node_modules/
 npm-debug.log
 yarn-error.log
 
 # Scraper de referencia (Puppeteer + material regenerable)
-/tools/scraper/node_modules
-/tools/scraper/out
+tools/scraper/out/
 
 # IDEs and editors
 .idea/
@@ -34,10 +34,10 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+.angular/
 .sass-cache/
 /connect.lock
-/coverage
+coverage/
 /libpeerconnection.log
 testem.log
 /typings

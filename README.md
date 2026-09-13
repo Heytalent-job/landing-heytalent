@@ -1,61 +1,70 @@
-# Hey Talent — landing
+# Hey Talent — Monorepo
 
-Recreación en Angular 21 de la landing de Hey Talent publicada como preview en Lovable
-(un SPA de React). El diseño no se transcribió a ojo: se extrajo con el scraper incluido
-en [tools/scraper/](tools/scraper/), que renderiza la página original y vuelca su DOM,
-CSS, paleta, tipografía y assets.
-
-## Puesta en marcha
-
-```bash
-npm install
-npm start          # http://localhost:4200
-npm run build      # bundle de producción en dist/
-npm test           # tests unitarios (Vitest)
-```
+Monorepo con npm workspaces. Un solo `node_modules` en la raíz, un solo
+`package-lock.json`, y cada app/paquete con su propio `package.json`.
 
 ## Estructura
 
 ```
-src/app/
-  app.ts                     Shell: compone las secciones de la página
-  data/site-content.ts       Todo el contenido y los enlaces, tipados
-  shared/icon/icon.ts        Iconos Lucide inline, dimensionados desde el host
-  components/
-    site-header/             Cabecera sticky con menú compacto por debajo de 1024px
-    hero/                    Degradado, buscador y manchas orgánicas
-    categories/              "¿Qué buscas hoy?"
-    features/                "Todo lo que necesitas"
-    about/                   "Quiénes somos": cifras, contacto y tarjetas con foto
-    site-footer/             Mapa del sitio en 6 columnas
+.
+├─ apps/
+│  └─ landing/        Landing pública (Angular 21) → heytalent.com
+├─ packages/
+│  └─ ui/             Design system compartido (@heytalent/ui)
+├─ tools/
+│  └─ scraper/        Utilidad puntual, fuera de los workspaces
+├─ tsconfig.base.json Opciones de TS comunes + alias @heytalent/*
+└─ package.json       Workspaces y scripts raíz
 ```
 
-El contenido vive separado de las plantillas en `data/site-content.ts`, de modo que
-editar textos o enlaces no obliga a tocar los componentes.
+## Requisitos
 
-## Diseño
+- Node 22.x — ojo: con Node v22.17 el CLI de Angular 22 no arranca, por eso
+  este repo está fijado a `@angular/cli@21`.
+- npm 10.9.2
 
-Los tokens salen tal cual del original y viven en [src/styles.css](src/styles.css) como
-custom properties. La paleta está en **OKLCH**, igual que la fuente:
+## Uso
 
-| Token | Valor |
-| --- | --- |
-| `--primary` | `oklch(55% 0.21 279)` |
-| `--secondary-foreground` | `oklch(35% 0.13 281)` |
-| `--muted-foreground` | `oklch(52% 0.045 283)` |
-| `--gradient-hero` | `linear-gradient(150deg, oklch(55% 0.21 279), oklch(66% 0.17 292))` |
-| `--radius` | `1.25rem` |
+```bash
+npm install                      # instala TODO el monorepo desde la raíz
+npm start                        # levanta la landing (atajo)
+npm run build                    # build de todos los workspaces
+npm test                         # tests de todos los workspaces
+```
 
-Tipografía: **Baloo 2** para titulares (`--font-display`) y **DM Sans** para el cuerpo,
-servidas desde Google Fonts. Los breakpoints replican los del original: 640px, 768px y
-1024px.
+Para trabajar sobre una app concreta se usa `-w` con el nombre del paquete:
 
-En lugar de Tailwind se escribió CSS propio por componente, con las utilidades
-compartidas (`.container`, `.btn`, `.blob`, sombras) en la hoja global.
+```bash
+npm start -w @heytalent/landing
+npm run build -w @heytalent/landing
+```
 
-## Verificación
+## Paquetes compartidos
 
-Se comparó el build contra la captura del original a 1440px y 390px: el texto renderizado
-coincide línea por línea (83/83) y las alturas de sección quedan dentro de ±8px.
+`packages/ui` se consume **desde el código fuente**, sin paso de build
+intermedio: el alias `@heytalent/ui` de `tsconfig.base.json` apunta a
+`packages/ui/src/index.ts` y el compilador de Angular lo incluye en el bundle
+de cada app. Esto evita tener que recompilar una librería antes de levantar el
+front. La contrapartida es que el paquete no es publicable a npm tal cual; si
+alguna vez hace falta, se le añade `ng-packagr`.
 
-> Los assets bajo `public/images/` provienen de la preview original y pertenecen a Hey Talent.
+Regla: si algo solo lo usa una app, vive en esa app. Solo sube a `packages/`
+lo que de verdad comparten dos o más.
+
+## Añadir el frontend de producto
+
+```bash
+npx -w @heytalent/landing ng new web --directory apps/web --style css --skip-install
+```
+
+Después: renombrar el paquete a `@heytalent/web`, apuntar sus `tsconfig` a
+`../../tsconfig.base.json` y añadir `@heytalent/ui` a sus dependencias, igual
+que en `apps/landing`.
+
+## Añadir el backend
+
+Va en `apps/api` como un workspace más (NestJS encaja bien con un equipo
+Angular: mismo TypeScript, mismos decoradores, misma inyección de
+dependencias). El contrato front ↔ back se comparte creando `packages/shared`
+con los DTOs y añadiendo su alias a `tsconfig.base.json`, igual que
+`@heytalent/ui`.

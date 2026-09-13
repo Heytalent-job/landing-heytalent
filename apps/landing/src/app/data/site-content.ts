@@ -1,4 +1,4 @@
-import { IconName } from '../shared/icon/icon';
+import { IconName } from '@heytalent/ui';
 
 export interface NavLink {
   label: string;

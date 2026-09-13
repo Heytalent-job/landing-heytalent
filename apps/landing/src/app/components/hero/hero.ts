@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
-import { Icon } from '../../shared/icon/icon';
+import { Icon } from '@heytalent/ui';
 import { BRAND, HERO } from '../../data/site-content';
 
 @Component({

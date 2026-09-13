@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, AfterViewInit, ElementRef } from '@angular/core';
-import { Icon } from '../../shared/icon/icon';
+import { Icon } from '@heytalent/ui';
 import { ABOUT, ABOUT_CARDS, ABOUT_STATS, CONTACT } from '../../data/site-content';
 
 @Component({

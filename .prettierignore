@@ -1,0 +1,6 @@
+# Artefactos y dependencias: nunca se formatean.
+node_modules/
+dist/
+out-tsc/
+.angular/
+package-lock.json

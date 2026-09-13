@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Icon } from '../../shared/icon/icon';
+import { Icon } from '@heytalent/ui';
 import { FEATURES } from '../../data/site-content';
 
 @Component({
