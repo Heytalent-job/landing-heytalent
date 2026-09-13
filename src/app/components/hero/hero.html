@@ -1,52 +1,62 @@
-<section class="hero-framer">
-  <!-- Efectos de Fondo: Resplandor Tech Glow + Malla + Burbujas -->
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-tech-grid" aria-hidden="true"></div>
+<section class="hero-custom">
+  <!-- Burbujas 3D con reflejo estilo Hey Talent -->
+  <div class="bubble-glass bubble--left-top" aria-hidden="true"></div>
+  <div class="bubble-glass bubble--left-mid" aria-hidden="true"></div>
+  <div class="bubble-glass bubble--left-bot" aria-hidden="true"></div>
 
-  <!-- Burbujas dinámicas flotantes del logo -->
-  <div class="bubble bubble--1" aria-hidden="true"></div>
-  <div class="bubble bubble--2" aria-hidden="true"></div>
-  <div class="bubble bubble--3" aria-hidden="true"></div>
-  <div class="bubble bubble--4" aria-hidden="true"></div>
+  <div class="bubble-glass bubble--right-top" aria-hidden="true"></div>
+  <div class="bubble-glass bubble--right-mid" aria-hidden="true"></div>
+  <div class="bubble-glass bubble--right-bot" aria-hidden="true"></div>
 
-  <div class="container hero-container">
-    <!-- Cabecera Central Estilo Framer -->
-    <header class="hero-header">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span>{{ hero.eyebrow }}</span>
+  <div class="container hero-content">
+    <!-- Badge -->
+    <span class="hero__eyebrow">{{ hero.eyebrow }}</span>
+
+    <!-- Título con "Hey Talent" resaltado -->
+    <h1 class="hero__title">
+      <span class="highlight-brand">Hey Talent:</span> tu red para conseguir el trabajo que quieres
+    </h1>
+
+    <p class="hero__subtitle">{{ hero.subtitle }}</p>
+
+    <!-- Botones de Acción -->
+    <div class="hero__actions">
+      <a class="btn btn--secondary btn--pill" href="/cuenta">Crear cuenta</a>
+      <a class="btn btn--on-hero btn--pill" href="/empresas">Soy empresa</a>
+    </div>
+
+    <!-- Mosaico / Galería de Fotos + Buscador Arriba -->
+    <div class="hero-stage">
+      <!-- Mosaico de tarjetas -->
+      <div class="stage-mosaic">
+        <!-- Tarjeta 1: Logo Hey Talent -->
+        <div class="mosaic-card card--logo shadow-soft">
+          <img [src]="brand.logo" [alt]="'Logo de ' + brand.name" />
+        </div>
+
+        <!-- Tarjeta 2: Foto equipo/personas izquierda -->
+        <div class="mosaic-card card--pic-1 shadow-soft">
+          <img src="images/talento-hero.png" alt="Talento trabajando" />
+        </div>
+
+        <!-- Tarjeta 3: Foto central principal -->
+        <div class="mosaic-card card--pic-main shadow-soft">
+          <img src="images/talento-hero.png" alt="Comunidad Hey Talent" />
+        </div>
+
+        <!-- Tarjeta 4: Foto personas derecha -->
+        <div class="mosaic-card card--pic-2 shadow-soft">
+          <img src="images/talento-hero.png" alt="Equipo tech" />
+        </div>
+
+        <!-- Tarjeta 5: Foto complementaria -->
+        <div class="mosaic-card card--pic-3 shadow-soft">
+          <img src="images/talento-hero.png" alt="Estudiantes tech" />
+        </div>
       </div>
 
-      <h1 class="hero-title">{{ hero.title }}</h1>
-      <p class="hero-subtitle">{{ hero.subtitle }}</p>
-
-      <div class="hero-cta-group">
-        <a class="btn-pill btn-pill--white" href="/cuenta">Crear cuenta</a>
-        <a class="btn-pill btn-pill--glass" href="/empresas">Soy empresa</a>
-      </div>
-    </header>
-
-    <!-- Vitrina Visual Principal (Mockup Glassmorphism con Personas + Logo + Buscador) -->
-    <div class="hero-stage shadow-soft">
-      <div class="stage-glow" aria-hidden="true"></div>
-
-      <!-- Capa de fondo del mockup: Logo de Hey Talent en marca de agua -->
-      <img
-        class="stage-brand-logo"
-        [src]="brand.logo"
-        [alt]="'Logo de ' + brand.name"
-        aria-hidden="true"
-      />
-
-      <!-- Personas felices del ecosistema Hey Talent -->
-      <img
-        class="stage-people-img"
-        src="images/hey_talent_integración.jpg"
-        alt="Comunidad de talento Hey Talent"
-      />
-
-      <!-- Buscador integrado flotante dentro del ecosistema -->
-      <div class="stage-search shadow-soft">
+      <!-- Buscador elevado flotando encima del mosaico -->
+      <div class="stage-search-overlay shadow-soft">
         <div class="search__field">
           <app-icon class="search__icon" name="search" />
           <input
