@@ -1,153 +1,282 @@
-.hero {
+:host {
+  display: block;
+  width: 100%;
+}
+
+.hero-framer {
   position: relative;
   overflow: hidden;
-  padding: 3.5rem 0 5rem;
+  /* Fondo original de la marca Hey Talent */
   background-image: var(--gradient-hero);
   color: var(--primary-foreground);
+  padding: 4rem 1.5rem 5.5rem;
 }
 
-/* Manchas orgánicas del fondo */
-.hero__blob {
+/* Malla técnica integrada con la paleta de Hey Talent */
+.hero-tech-grid {
   position: absolute;
-  background: oklch(99% 0.005 285 / 0.1);
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
   pointer-events: none;
+  z-index: 1;
 }
 
-.hero__blob--left {
-  top: 1.5rem;
-  left: -5rem;
-  width: 16rem;
-  height: 16rem;
+/* Resplandor orgánico suave en el tono lila/blanco del logo */
+.hero-glow {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70vw;
+  height: 350px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.hero__blob--right {
-  right: -2.5rem;
-  bottom: -7rem;
-  width: 18rem;
-  height: 18rem;
+/* Burbujas flotantes animadas del logo */
+.bubble {
+  position: absolute;
+  background: oklch(99% 0.005 285 / 0.85);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  animation: floatBubble 5s ease-in-out infinite alternate;
 }
 
-.hero__inner {
+.bubble--1 { width: 32px; height: 32px; top: 12%; left: 8%; animation-duration: 4.5s; }
+.bubble--2 { width: 54px; height: 54px; top: 20%; right: 10%; animation-duration: 6.5s; }
+.bubble--3 { width: 22px; height: 22px; bottom: 35%; left: 10%; animation-duration: 4s; }
+.bubble--4 { width: 38px; height: 38px; bottom: 25%; right: 12%; animation-duration: 6s; }
+
+@keyframes floatBubble {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* Contenedor central estilo Framer */
+.hero-container {
   position: relative;
-  display: grid;
+  z-index: 3;
+  max-width: 1000px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  text-align: center;
 }
 
-.hero__eyebrow {
-  display: inline-block;
-  padding: 0.25rem 1rem;
+.hero-header {
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
   border-radius: 9999px;
-  background: oklch(99% 0.005 285 / 0.15);
+  background: oklch(99% 0.005 285 / 0.18);
+  border: 1px solid oklch(99% 0.005 285 / 0.3);
+  backdrop-filter: blur(10px);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
 }
 
-.hero__title {
-  margin-top: 1rem;
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
   color: var(--primary-foreground);
+  margin: 0 0 1.25rem;
 }
 
-.hero__subtitle {
-  max-width: 32rem;
-  margin-top: 1rem;
-  color: oklch(99% 0.005 285 / 0.85);
+.hero-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  color: oklch(99% 0.005 285 / 0.9);
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  line-height: 1.55;
 }
 
-/* Buscador */
-.search {
-  margin-top: 1.75rem;
-  padding: 0.75rem;
-  border-radius: 1.5rem;
-  background: var(--card);
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
 }
 
-.search__field {
+.btn-pill {
+  padding: 0.75rem 1.8rem;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-pill--white {
+  background: #ffffff;
+  color: #6366f1; /* Morado marca Hey Talent */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.btn-pill--glass {
+  background: oklch(99% 0.005 285 / 0.15);
+  border: 1.5px solid oklch(99% 0.005 285 / 0.3);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+}
+
+.btn-pill:hover {
+  transform: translateY(-2px);
+}
+
+/* Vitrina Mockup Central Glassmorphism en tono blanco translúcido */
+.hero-stage {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 20px 50px -10px rgba(79, 85, 227, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem 1.5rem;
+}
+
+/* Logo de Hey Talent de fondo con marca de agua elegante */
+.stage-brand-logo {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  width: 85px;
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+}
+
+/* Personas del ecosistema */
+.stage-people-img {
+  position: absolute;
+  bottom: 0;
+  max-height: 88%;
+  width: auto;
+  object-fit: contain;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 -6px 20px rgba(79, 85, 227, 0.25));
+}
+
+/* Buscador blanco limpio */
+.stage-search {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.stage-search .search__field {
   display: flex;
   flex: 1;
   align-items: center;
   gap: 0.5rem;
-  padding-inline: 0.75rem;
-  border-radius: 1rem;
-  background: var(--muted);
+  padding-inline: 1rem;
+  background: var(--muted, #f3f4f6);
+  border-radius: 9999px;
 }
 
-.search__icon {
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
-  color: var(--muted-foreground);
+.stage-search .search__icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--muted-foreground, #6b7280);
 }
 
-.search__input {
+.stage-search .search__input {
   width: 100%;
-  height: 2.25rem;
-  padding: 0.25rem 0.75rem;
+  height: 2.5rem;
   border: 0;
   background: transparent;
-  color: var(--foreground);
-  font: inherit;
-  font-size: 0.875rem;
+  color: var(--foreground, #111827);
+  font-size: 0.95rem;
 }
 
-.search__input::placeholder {
-  color: var(--muted-foreground);
-}
-
-.search__input:focus {
+.stage-search .search__input:focus {
   outline: none;
 }
 
-.search__submit {
-  width: 100%;
-  margin-top: 0.75rem;
-  border-radius: 1rem;
+.stage-search .search__submit {
+  border-radius: 9999px;
+  padding: 0.75rem 1.6rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-}
-
-/* Logo */
-.hero__art {
-  position: relative;
-  max-width: 24rem;
-  margin-inline: auto;
-}
-
-.hero__art-blob {
-  position: absolute;
-  inset: 0;
-  background: oklch(99% 0.005 285 / 0.15);
-}
-
-.hero__logo {
-  position: relative;
-  width: 14rem;
-  margin-inline: auto;
-  border-radius: 2.5rem;
-}
-
-@media (min-width: 640px) {
-  .search {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-framer {
+    padding: 3rem 1rem 4rem;
   }
-
-  .search__submit {
-    width: auto;
-    margin-top: 0;
+  .hero-title {
+    font-size: 2.2rem;
   }
-}
-
-@media (min-width: 1024px) {
-  .hero__inner {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  .btn-pill {
+    width: 100%;
+    max-width: 280px;
+  }
+  .hero-stage {
+    min-height: 380px;
+    padding: 1rem;
+  }
+  .stage-brand-logo {
+    top: 1rem;
+    left: 1rem;
+    width: 65px;
+  }
+  .stage-people-img {
+    max-height: 65%;
+  }
+  .stage-search {
+    flex-direction: column;
+    border-radius: 1.25rem;
+    padding: 0.75rem;
+  }
+  .stage-search .search__submit {
+    width: 100%;
+  }
+  .bubble--2, .bubble--4 {
+    display: none;
   }
 }

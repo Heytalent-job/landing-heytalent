@@ -1,14 +1,52 @@
-<section class="hero">
-  <div class="hero__blob hero__blob--left blob" aria-hidden="true"></div>
-  <div class="hero__blob hero__blob--right blob" aria-hidden="true"></div>
+<section class="hero-framer">
+  <!-- Efectos de Fondo: Resplandor Tech Glow + Malla + Burbujas -->
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-tech-grid" aria-hidden="true"></div>
 
-  <div class="hero__inner container">
-    <div>
-      <span class="hero__eyebrow">{{ hero.eyebrow }}</span>
-      <h1 class="hero__title">{{ hero.title }}</h1>
-      <p class="hero__subtitle">{{ hero.subtitle }}</p>
+  <!-- Burbujas dinámicas flotantes del logo -->
+  <div class="bubble bubble--1" aria-hidden="true"></div>
+  <div class="bubble bubble--2" aria-hidden="true"></div>
+  <div class="bubble bubble--3" aria-hidden="true"></div>
+  <div class="bubble bubble--4" aria-hidden="true"></div>
 
-      <div class="search shadow-soft">
+  <div class="container hero-container">
+    <!-- Cabecera Central Estilo Framer -->
+    <header class="hero-header">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>{{ hero.eyebrow }}</span>
+      </div>
+
+      <h1 class="hero-title">{{ hero.title }}</h1>
+      <p class="hero-subtitle">{{ hero.subtitle }}</p>
+
+      <div class="hero-cta-group">
+        <a class="btn-pill btn-pill--white" href="/cuenta">Crear cuenta</a>
+        <a class="btn-pill btn-pill--glass" href="/empresas">Soy empresa</a>
+      </div>
+    </header>
+
+    <!-- Vitrina Visual Principal (Mockup Glassmorphism con Personas + Logo + Buscador) -->
+    <div class="hero-stage shadow-soft">
+      <div class="stage-glow" aria-hidden="true"></div>
+
+      <!-- Capa de fondo del mockup: Logo de Hey Talent en marca de agua -->
+      <img
+        class="stage-brand-logo"
+        [src]="brand.logo"
+        [alt]="'Logo de ' + brand.name"
+        aria-hidden="true"
+      />
+
+      <!-- Personas felices del ecosistema Hey Talent -->
+      <img
+        class="stage-people-img"
+        src="images/talento-hero.png"
+        alt="Comunidad de talento Hey Talent"
+      />
+
+      <!-- Buscador integrado flotante dentro del ecosistema -->
+      <div class="stage-search shadow-soft">
         <div class="search__field">
           <app-icon class="search__icon" name="search" />
           <input
@@ -22,16 +60,6 @@
         </div>
         <a class="btn btn--primary search__submit" [href]="searchHref">Buscar empleos</a>
       </div>
-
-      <div class="hero__actions">
-        <a class="btn btn--secondary btn--pill" href="/cuenta">Crear cuenta</a>
-        <a class="btn btn--on-hero btn--pill" href="/empresas">Soy empresa</a>
-      </div>
-    </div>
-
-    <div class="hero__art">
-      <div class="hero__art-blob blob" aria-hidden="true"></div>
-      <img class="hero__logo shadow-soft" [src]="brand.logo" [alt]="'Logo de ' + brand.name" />
     </div>
   </div>
 </section>
