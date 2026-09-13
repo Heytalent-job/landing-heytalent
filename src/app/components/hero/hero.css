@@ -22,44 +22,102 @@
   align-items: center;
 }
 
-/* --- BURBUJAS 3D CON REFLEJO (ESFERAS DE CRISTAL) --- */
+/* --- BURBUJAS DE CRISTAL ASIMÉTRICAS Y MÁS TRANSPARENTES --- */
 .bubble-glass {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
-  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.4) 40%, rgba(255, 255, 255, 0.15) 75%);
-  box-shadow: inset -5px -5px 15px rgba(100, 110, 240, 0.3), 0 10px 30px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(4px);
+  /* Mayor transparencia: centro casi transparente con borde difuminado */
+  background: radial-gradient(
+    circle at 35% 25%,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: inset -4px -4px 12px rgba(255, 255, 255, 0.2), 
+              0 8px 24px rgba(79, 85, 227, 0.15);
+  backdrop-filter: blur(2px);
   animation: floatSoft 6s ease-in-out infinite alternate;
 }
 
-/* Destello blanco en la esfera */
+/* Brillo interior */
 .bubble-glass::after {
   content: "";
   position: absolute;
   top: 18%;
-  left: 22%;
-  width: 20%;
-  height: 20%;
+  left: 20%;
+  width: 18%;
+  height: 18%;
   border-radius: 50%;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.7);
   filter: blur(1px);
 }
 
-/* Posiciones a la izquierda */
-.bubble--left-top { width: 90px; height: 90px; top: 8%; left: 3%; animation-duration: 6s; }
-.bubble--left-mid { width: 130px; height: 130px; top: 30%; left: -2%; animation-duration: 8s; }
-.bubble--left-bot { width: 150px; height: 150px; bottom: 8%; left: 2%; animation-duration: 7s; }
+/* --- TAMAÑOS ASIMÉTRICOS Y POSICIONES MÁS CERCANAS AL CENTRO --- */
 
-/* Posiciones a la derecha */
-.bubble--right-top { width: 85px; height: 85px; top: 12%; right: 4%; animation-duration: 6.5s; }
-.bubble--right-mid { width: 140px; height: 140px; top: 28%; right: -2%; animation-duration: 8.5s; }
-.bubble--right-bot { width: 110px; height: 110px; bottom: 12%; right: 5%; animation-duration: 7.5s; }
+/* Lado Izquierdo (Acercadas al texto y buscador) */
+.bubble--left-top {
+  width: 55px;      /* Pequeña */
+  height: 55px;
+  top: 10%;
+  left: 14%;       /* Más cerca del centro */
+  animation-duration: 5.5s;
+}
+
+.bubble--left-mid {
+  width: 145px;     /* Grande / Protagonista */
+  height: 145px;
+  top: 32%;
+  left: 8%;        /* Entra un poco al área de lectura */
+  animation-duration: 8s;
+  animation-delay: -1s;
+}
+
+.bubble--left-bot {
+  width: 80px;      /* Mediana */
+  height: 80px;
+  bottom: 12%;
+  left: 16%;       /* Muy cerca de la tarjeta del logo */
+  animation-duration: 6.5s;
+  animation-delay: -2s;
+}
+
+/* Lado Derecho (Asimétrico respecto a la izquierda) */
+.bubble--right-top {
+  width: 110px;     /* Mediana-grande */
+  height: 110px;
+  top: 14%;
+  right: 15%;      /* Más hacia el centro */
+  animation-duration: 7s;
+}
+
+.bubble--right-mid {
+  width: 45px;      /* Muy pequeña / detalle tech */
+  height: 45px;
+  top: 42%;
+  right: 12%;
+  animation-duration: 4.8s;
+  animation-delay: -1.5s;
+}
+
+.bubble--right-bot {
+  width: 165px;     /* Extra grande y suave */
+  height: 165px;
+  bottom: 8%;
+  right: 9%;
+  animation-duration: 9s;
+  opacity: 0.85;
+}
 
 @keyframes floatSoft {
-  0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(-18px) rotate(3deg); }
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  100% {
+    transform: translateY(-16px) scale(1.04);
+  }
 }
 
 /* --- TEXTOS Y RESALTADO --- */
