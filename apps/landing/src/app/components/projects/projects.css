@@ -1,0 +1,213 @@
+.projects {
+  padding-block: 3.5rem;
+}
+
+.projects h2 {
+  text-align: center;
+}
+
+
+/* ==============================
+   CONTENEDOR DE TARJETAS
+   ============================== */
+
+.projects__grid {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 1.25rem;
+}
+
+
+/* ==============================
+   TARJETA
+   ============================== */
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+
+  background: var(--card);
+  box-shadow: var(--shadow-card);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-soft);
+}
+
+
+/* ==============================
+   IMAGEN + CATEGORÍA
+   ============================== */
+
+.project-card__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card__image {
+  width: 100%;
+  height: 13rem;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-card__image {
+  transform: scale(1.02);
+}
+
+.project-card__badge {
+  position: absolute;
+
+  left: 1rem;
+  bottom: 1rem;
+
+  padding: 0.35rem 0.75rem;
+
+  border-radius: 999px;
+
+  background: var(--primary);
+  color: var(--primary-foreground);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+
+/* ==============================
+   CONTENIDO
+   ============================== */
+
+.project-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  padding: 1.25rem;
+}
+
+.project-card__title {
+  font-size: 1.15rem;
+}
+
+.project-card__description {
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+
+  font-size: 0.875rem;
+  line-height: 1.5;
+
+  color: var(--muted-foreground);
+}
+
+
+/* ==============================
+   FECHA / HORA / LUGAR
+   ============================== */
+
+.project-card__meta {
+  margin-top: auto;
+  padding-top: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 0.75rem;
+
+  border-top: 1px solid var(--border);
+}
+
+.project-card__meta-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.15rem;
+}
+
+.project-card__meta-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  color: var(--muted-foreground);
+}
+
+.project-card__meta-item strong {
+  font-size: 0.75rem;
+  color: var(--secondary-foreground);
+}
+
+
+/* ==============================
+   TABLET
+   ============================== */
+
+@media (min-width: 640px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ==============================
+   COMPUTADORA
+   ============================== */
+
+@media (min-width: 1024px) {
+  .projects__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* ==============================
+   CELULAR
+   ============================== */
+
+@media (max-width: 639px) {
+  .project-card__image {
+    height: 190px;
+  }
+
+  .project-card__meta {
+    gap: 0.5rem;
+  }
+
+  .project-card__meta-item strong {
+    font-size: 0.7rem;
+  }
+}
+
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card__image {
+    transition: none;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+
+  .project-card:hover .project-card__image {
+    transform: none;
+  }
+}
