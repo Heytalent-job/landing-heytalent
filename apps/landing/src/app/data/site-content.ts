@@ -1,15 +1,6 @@
-import { IconName } from '@heytalent/ui';
-
 export interface NavLink {
   label: string;
   href: string;
-}
-
-export interface CardItem {
-  icon: IconName;
-  title: string;
-  description: string;
-  href?: string;
 }
 
 export interface PhotoCard {
@@ -41,47 +32,7 @@ export const HERO = {
   title: 'Hey Talent: tu red para conseguir el trabajo que quieres',
   subtitle:
     'Prácticas, part time, full time y remoto en un solo lugar. Crea tu perfil, arma tu CV y conecta con empresas que buscan talento como el tuyo.',
-  searchPlaceholder: '¿Qué empleo buscas?',
 } as const;
-
-export const CATEGORIES: CardItem[] = [
-  {
-    icon: 'graduation-cap',
-    title: 'Prácticas',
-    description: 'Empieza tu carrera con acompañamiento.',
-    href: '/empleos',
-  },
-  {
-    icon: 'briefcase-business',
-    title: 'Part / Full Time',
-    description: 'Jornadas que se adaptan a tu vida.',
-    href: '/empleos',
-  },
-  {
-    icon: 'laptop',
-    title: 'Remoto',
-    description: 'Trabaja desde cualquier lugar del país.',
-    href: '/empleos',
-  },
-];
-
-export const FEATURES: CardItem[] = [
-  {
-    icon: 'search',
-    title: 'Búsqueda con filtros',
-    description: 'Área, ciudad, modalidad, salario y más.',
-  },
-  {
-    icon: 'users',
-    title: 'Networking real',
-    description: 'Conecta con reclutadores y otros postulantes.',
-  },
-  {
-    icon: 'rocket',
-    title: 'Postula en un clic',
-    description: 'Con tu CV guardado y perfil completo.',
-  },
-];
 
 export const ABOUT = {
   eyebrow: 'Quiénes somos',
@@ -172,8 +123,8 @@ export const PARTNERS: Partner[] = [
 export const CONTACT = {
   whatsapp: 'https://chat.whatsapp.com/Jyj3Urt0JZWAqibVCJ4pT5',
   linkedin: 'https://www.linkedin.com/company/heytalentoficial/',
-  phoneHref: 'tel:+51962366275',
-  phoneLabel: 'Asesorías: 962 366 275',
+  phoneHref: 'tel:+51938733627',
+  phoneLabel: 'Asesorías: 938 733 627',
 } as const;
 
 export const FOOTER_COLUMNS: FooterColumn[] = [

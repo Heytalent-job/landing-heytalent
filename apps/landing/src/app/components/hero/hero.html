@@ -24,7 +24,7 @@
     <p class="hero__subtitle">{{ hero.subtitle }}</p>
 
 
-    <!-- Mosaico / Galería de Fotos + Buscador Arriba -->
+    <!-- Mosaico / Galería de Fotos -->
     <div class="hero-stage">
       <!-- Mosaico de tarjetas -->
       <div class="stage-mosaic">
@@ -52,22 +52,6 @@
         <div class="mosaic-card card--pic-3 shadow-soft">
           <img src="images/networking-evento.jpg" alt="Estudiantes tech" />
         </div>
-      </div>
-
-      <!-- Buscador elevado flotando encima del mosaico -->
-      <div class="stage-search-overlay shadow-soft">
-        <div class="search__field">
-          <app-icon class="search__icon" name="search" />
-          <input
-            class="search__input"
-            type="search"
-            [placeholder]="hero.searchPlaceholder"
-            [attr.aria-label]="hero.searchPlaceholder"
-            [value]="query()"
-            (input)="onInput($event)"
-          />
-        </div>
-        <a class="btn btn--primary search__submit" [href]="searchHref">Buscar empleos</a>
       </div>
     </div>
   </div>
