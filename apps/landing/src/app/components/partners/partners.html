@@ -1,0 +1,70 @@
+<section class="section container partners" aria-labelledby="partners-title">
+  <header class="partners__header">
+    <p class="eyebrow">{{ section.eyebrow }}</p>
+    <h2 id="partners-title" class="partners__title">{{ section.title }}</h2>
+    <p class="partners__subtitle">{{ section.subtitle }}</p>
+  </header>
+
+  <div class="partners__carousel-wrapper" role="region" aria-roledescription="carousel" aria-label="Carrusel de organizaciones aliadas">
+    <!-- Flecha izquierda -->
+    <button
+      class="carousel-nav carousel-nav--prev"
+      type="button"
+      aria-label="Aliado anterior"
+      (click)="prev()"
+    >
+      <app-icon name="chevron-left" />
+    </button>
+
+    <!-- Viewport -->
+    <div class="partners__viewport">
+      <div
+        class="partners__track"
+        [class.partners__track--animating]="withTransition()"
+        [style.--current-index]="currentIndex()"
+        (transitionend)="onTransitionEnd()"
+        aria-live="polite"
+      >
+        @for (partner of carouselItems(); track $index) {
+          <div class="partner-slide">
+            <div class="partner-slide__logo-container">
+              @if (partner.logo) {
+                <img
+                  class="partner-slide__logo"
+                  [src]="partner.logo"
+                  [alt]="partner.alt || partner.name"
+                  loading="lazy"
+                />
+              } @else {
+                <div class="partner-slide__placeholder">
+                  <svg
+                    class="partner-slide__placeholder-icon"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <rect x="5" y="9" width="38" height="30" rx="8" stroke="currentColor" stroke-width="2.2" stroke-dasharray="3.5 3.5" />
+                    <path d="M15 27L22 20L33 31" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="31" cy="18" r="3" fill="currentColor"/>
+                  </svg>
+                </div>
+              }
+            </div>
+            <span class="partner-slide__name">{{ partner.name }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Flecha derecha -->
+    <button
+      class="carousel-nav carousel-nav--next"
+      type="button"
+      aria-label="Siguiente aliado"
+      (click)="next()"
+    >
+      <app-icon name="chevron-right" />
+    </button>
+  </div>
+</section>

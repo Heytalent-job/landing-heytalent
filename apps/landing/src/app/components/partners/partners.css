@@ -1,0 +1,212 @@
+:host {
+  display: block;
+  --visible-items: 1.5;
+}
+
+@media (min-width: 640px) {
+  :host {
+    --visible-items: 2.5;
+  }
+}
+
+@media (min-width: 1024px) {
+  :host {
+    --visible-items: 4;
+  }
+}
+
+.partners {
+  padding-block: 4rem;
+}
+
+.partners__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.partners__title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--secondary-foreground);
+  line-height: 1.2;
+}
+
+.partners__subtitle {
+  font-size: 1.05rem;
+  color: var(--muted-foreground);
+  max-width: 44rem;
+  line-height: 1.5;
+}
+
+/* Envoltorio horizontal del carrusel */
+.partners__carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Viewport que contiene y enmascara los slides */
+.partners__viewport {
+  overflow: hidden;
+  width: 100%;
+  padding-block: 0.75rem;
+}
+
+/* Pista deslizante continua */
+.partners__track {
+  display: flex;
+  transform: translateX(calc(-100% / var(--visible-items) * var(--current-index, 0)));
+  will-change: transform;
+}
+
+.partners__track--animating {
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Slide individual: 100% transparente, sin bordes ni recuadros */
+.partner-slide {
+  flex: 0 0 calc(100% / var(--visible-items));
+  min-width: calc(100% / var(--visible-items));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.25rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  gap: 1.25rem;
+  user-select: none;
+}
+
+/* Contenedor del logotipo optimizado y con mayor presencia */
+.partner-slide__logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 6rem;
+  background: transparent;
+}
+
+.partner-slide__logo {
+  max-width: 11rem;
+  max-height: 4.5rem;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+@media (min-width: 640px) {
+  .partner-slide__logo-container {
+    height: 7rem;
+  }
+
+  .partner-slide__logo {
+    max-width: 12.5rem;
+    max-height: 5.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .partner-slide__logo-container {
+    height: 7.5rem;
+  }
+
+  .partner-slide__logo {
+    max-width: 14rem;
+    max-height: 6rem;
+  }
+}
+
+.partner-slide:hover .partner-slide__logo {
+  transform: scale(1.06);
+}
+
+/* Placeholder neutro de respaldo */
+.partner-slide__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  opacity: 0.75;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.partner-slide:hover .partner-slide__placeholder {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.partner-slide__placeholder-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.partner-slide__name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--secondary-foreground);
+  transition: color 0.2s ease, transform 0.2s ease;
+  margin: 0;
+}
+
+.partner-slide:hover .partner-slide__name {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* Botones de navegación laterales discretos */
+.carousel-nav {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--secondary-foreground);
+  box-shadow: 0 4px 12px -2px oklch(0% 0 0 / 0.08);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+
+.carousel-nav:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-soft);
+  transform: scale(1.06);
+}
+
+.carousel-nav:active {
+  transform: scale(0.95);
+}
+
+.carousel-nav app-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partners__track--animating {
+    transition: none;
+  }
+  .carousel-nav,
+  .partner-slide__logo,
+  .partner-slide__placeholder,
+  .partner-slide__name {
+    transition: none;
+  }
+}

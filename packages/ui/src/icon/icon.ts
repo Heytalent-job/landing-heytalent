@@ -13,7 +13,9 @@ export type IconName =
   | 'message-circle'
   | 'phone'
   | 'menu'
-  | 'x';
+  | 'x'
+  | 'chevron-left'
+  | 'chevron-right';
 
 /** Trazos de los iconos (Lucide, 24x24, stroke currentColor). */
 const PATHS: Record<IconName, string> = {
@@ -36,6 +38,8 @@ const PATHS: Record<IconName, string> = {
     '<path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/>',
   menu: '<path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>',
   x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+  'chevron-left': '<path d="m15 18-6-6 6-6"/>',
+  'chevron-right': '<path d="m9 18 6-6-6-6"/>',
 };
 
 @Component({

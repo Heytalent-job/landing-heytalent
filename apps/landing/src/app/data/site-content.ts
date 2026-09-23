@@ -34,14 +34,7 @@ export const BRAND = {
   tagline: 'Networking y búsqueda de empleo para talento joven: conecta, postula y crece.',
 } as const;
 
-export const NAV_LINKS: NavLink[] = [
-  { label: 'Buscar Empleos', href: '/empleos' },
-  { label: 'Mi Cuenta', href: '/cuenta' },
-  { label: 'Empresas', href: '/empresas' },
-  { label: 'Recursos', href: '/recursos' },
-  { label: 'Nosotros', href: '/nosotros' },
-  { label: 'Soporte', href: '/soporte' },
-];
+export const NAV_LINKS: NavLink[] = [];
 
 export const HERO = {
   eyebrow: 'Networking + Empleo',
@@ -118,6 +111,61 @@ export const ABOUT_CARDS: PhotoCard[] = [
     image: 'images/networking-evento.webp',
     title: 'Marca personal',
     description: 'Eventos y comunidad para hacerte visible y potenciar tu presencia profesional.',
+  },
+];
+
+export interface Partner {
+  name: string;
+  logo?: string;
+  alt?: string;
+}
+
+export const PARTNERS_SECTION = {
+  eyebrow: 'NUESTROS ALIADOS',
+  title: 'Organizaciones que confían en el talento joven',
+  subtitle: 'Empresas, universidades y comunidades con las que creamos oportunidades juntos.',
+} as const;
+
+export const PARTNERS: Partner[] = [
+  {
+    name: 'Academia Hooke',
+    logo: 'images/partners/academia-hooke.webp',
+    alt: 'Logo de Academia Hooke',
+  },
+  {
+    name: 'COE Business School',
+    logo: 'images/partners/coe-business-school.webp',
+    alt: 'Logo de COE Business School',
+  },
+  {
+    name: 'Fundación WE',
+    logo: 'images/partners/fundacion-we.webp',
+    alt: 'Logo de Fundación WE',
+  },
+  {
+    name: 'Gestión 360',
+    logo: 'images/partners/gestion-360.webp',
+    alt: 'Logo de Gestión 360',
+  },
+  {
+    name: 'IISE PUCP',
+    logo: 'images/partners/iise-pucp.webp',
+    alt: 'Logo de IISE PUCP',
+  },
+  {
+    name: 'Inspírate Creator',
+    logo: 'images/partners/inspirate-creator.webp',
+    alt: 'Logo de Inspírate Creator',
+  },
+  {
+    name: 'Mar de becas',
+    logo: 'images/partners/mar-de-becas.webp',
+    alt: 'Logo de Mar de becas',
+  },
+  {
+    name: 'WarmiVentures',
+    logo: 'images/partners/warmiventures.webp',
+    alt: 'Logo de WarmiVentures',
   },
 ];
 
