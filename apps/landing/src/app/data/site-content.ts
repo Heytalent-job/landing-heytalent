@@ -168,14 +168,14 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: 'Plantillas de CV', href: '/recursos' },
     ],
   },
-  {
-    title: 'Nosotros',
-    links: [
-      { label: 'Quiénes somos', href: '/nosotros' },
-      { label: 'Misión', href: '/nosotros' },
-      { label: 'Contacto', href: '/nosotros' },
-    ],
-  },
+{
+  title: 'Nosotros',
+  links: [
+    { label: 'Quiénes somos', href: '/nosotros' },
+    { label: 'Aliados', href: '/nosotros' },
+    { label: 'Talleres', href: '/nosotros' },
+  ],
+},
   {
     title: 'Soporte',
     links: [
