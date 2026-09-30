@@ -122,7 +122,11 @@ export const PARTNERS: Partner[] = [
 
 export const CONTACT = {
   whatsapp: 'https://chat.whatsapp.com/Jyj3Urt0JZWAqibVCJ4pT5',
-  linkedin: 'https://www.linkedin.com/company/heytalentoficial/',
+
+  instagram: 'https://www.instagram.com/heytalentoficial/?hl=es',
+
+  linkedin: 'https://www.linkedin.com/company/heytalentoficial/posts/?feedView=all',
+
   phoneHref: 'tel:+51938733627',
   phoneLabel: 'Asesorías: 938 733 627',
 } as const;

@@ -12,6 +12,9 @@ import { BRAND, CONTACT, FOOTER_COLUMNS } from '../../data/site-content';
 export class SiteFooter {
   protected readonly brand = BRAND;
   protected readonly columns = FOOTER_COLUMNS;
+
   protected readonly linkedinUrl = CONTACT.linkedin;
+  protected readonly instagramUrl = CONTACT.instagram;
+  
   protected readonly year = new Date().getFullYear();
 }
