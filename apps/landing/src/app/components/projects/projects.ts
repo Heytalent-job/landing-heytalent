@@ -37,7 +37,7 @@ export class Projects implements OnInit, OnDestroy {
       speaker: 'Sandro Agama',
       title:
         'Internacionaliza tu talento: de Ingeniería Industrial a Data Analytics',
-      image: '/images/events/sandro.png',
+      image: '/images/events/sandro.webp',
       category: 'Webinar',
       date: '02/08/26',
       time: '18:00 h',
@@ -48,7 +48,7 @@ export class Projects implements OnInit, OnDestroy {
       speaker: 'Juan Kevin Masquez Jimenez',
       title:
         'Power Skills en Acción: Cómo destacar en tu próxima entrevista y no ser descartado',
-      image: '/images/events/kevin.png',
+      image: '/images/events/kevin.webp',
       category: 'Taller',
       date: '24/08/26',
       time: '15:00 h',
@@ -59,7 +59,7 @@ export class Projects implements OnInit, OnDestroy {
       speaker: 'Ryan André Herrera Ortega',
       title:
         'Cómo destacar como Data Analyst usando herramientas IA',
-      image: '/images/events/ryan.png',
+      image: '/images/events/ryan.webp',
       category: 'Webinar',
       date: '25/06/26',
       time: '19:00 h',
@@ -70,7 +70,7 @@ export class Projects implements OnInit, OnDestroy {
       speaker: 'Daniela Torres',
       title:
         'Estrategias de Marketing para Potenciar tu Perfil Profesional',
-      image: '/images/events/daniela.png',
+      image: '/images/events/daniela.webp',
       category: 'Webinar',
       date: '19/03/26',
       time: '20:00 h',
@@ -81,7 +81,7 @@ export class Projects implements OnInit, OnDestroy {
       speaker: 'Franko Vilchez Marcos',
       title:
         'Taller de empleabilidad - COE Business School',
-      image: '/images/events/franko.png',
+      image: '/images/events/franko.webp',
       category: 'Taller',
       date: '22/08/26',
       time: '19:00 h',
@@ -92,7 +92,7 @@ export class Projects implements OnInit, OnDestroy {
       speaker: 'Tania Gamboa Rojas',
       title:
         'Europa al Alcance: Estudia, Trabaja y Viaja siendo Peruano',
-      image: '/images/events/tania.png',
+      image: '/images/events/tania.webp',
       category: 'Webinar',
       date: '15/06/26',
       time: '19:00 h',

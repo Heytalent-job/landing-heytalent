@@ -1,6 +1,8 @@
 export interface NavLink {
   label: string;
   href: string;
+  /** Abre en pestaña nueva: para destinos fuera de la landing (redes, WhatsApp). */
+  external?: boolean;
 }
 
 export interface PhotoCard {
@@ -38,7 +40,6 @@ export const ABOUT = {
   eyebrow: 'Quiénes somos',
   title: 'Impulsamos el desarrollo profesional del talento joven',
   body: 'Hey Talent impulsa el desarrollo profesional de jóvenes y profesionales, fortaleciendo su empleabilidad y marca personal a través de formación práctica, mentorías y experiencias alineadas al nuevo panorama laboral.',
-  link: { label: 'Conoce más sobre nosotros →', href: '/nosotros' },
 } as const;
 
 export const ABOUT_STATS: Stat[] = [
@@ -133,59 +134,20 @@ export const CONTACT = {
 
 export const FOOTER_COLUMNS: FooterColumn[] = [
   {
-    title: 'Buscar Empleos',
+    title: 'Nosotros',
     links: [
-      { label: 'Prácticas', href: '/empleos' },
-      { label: 'Trabajo Part Time', href: '/empleos' },
-      { label: 'Trabajo Full Time', href: '/empleos' },
-      { label: 'Trabajo Remoto', href: '/empleos' },
-      { label: 'Filtros', href: '/empleos' },
+      { label: 'Quiénes somos', href: '#nosotros' },
+      { label: 'Talleres', href: '#eventos' },
+      { label: 'Aliados', href: '#aliados' },
     ],
   },
   {
-    title: 'Mi Cuenta',
+    title: 'Contacto',
     links: [
-      { label: 'Iniciar Sesión', href: '/cuenta' },
-      { label: 'Registrarse', href: '/cuenta' },
-      { label: 'Perfil', href: '/cuenta' },
-      { label: 'CV', href: '/cuenta' },
-      { label: 'Postulaciones', href: '/cuenta' },
-      { label: 'Favoritos', href: '/cuenta' },
-    ],
-  },
-  {
-    title: 'Empresas',
-    links: [
-      { label: 'Publicar Oferta', href: '/empresas' },
-      { label: 'Buscar Candidatos', href: '/empresas' },
-      { label: 'Gestión de Ofertas', href: '/empresas' },
-      { label: 'Dashboard', href: '/empresas' },
-    ],
-  },
-  {
-    title: 'Recursos',
-    links: [
-      { label: 'Blog', href: '/recursos' },
-      { label: 'Guías', href: '/recursos' },
-      { label: 'Consejos Laborales', href: '/recursos' },
-      { label: 'Preparación para entrevistas', href: '/recursos' },
-      { label: 'Plantillas de CV', href: '/recursos' },
-    ],
-  },
-{
-  title: 'Nosotros',
-  links: [
-    { label: 'Quiénes somos', href: '/nosotros' },
-    { label: 'Aliados', href: '/nosotros' },
-    { label: 'Talleres', href: '/nosotros' },
-  ],
-},
-  {
-    title: 'Soporte',
-    links: [
-      { label: 'Redes Sociales', href: '/soporte' },
-      { label: 'Preguntas Frecuentes', href: '/soporte' },
-      { label: 'Ayuda', href: '/soporte' },
+      { label: 'Únete al WhatsApp', href: CONTACT.whatsapp, external: true },
+      { label: 'LinkedIn', href: CONTACT.linkedin, external: true },
+      { label: 'Instagram', href: CONTACT.instagram, external: true },
+      { label: CONTACT.phoneLabel, href: CONTACT.phoneHref },
     ],
   },
 ];

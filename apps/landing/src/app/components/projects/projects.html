@@ -1,4 +1,4 @@
-<section class="events">
+<section class="events" id="eventos">
   <div class="container">
 
     <header class="events__header">
@@ -58,9 +58,13 @@
                   <div class="event-card__background-wrap">
                     <img
                       class="event-card__background"
-                      src="/images/events/fondo-eventos.png"
+                      src="/images/events/fondo-eventos.webp"
                       alt=""
                       aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
+                      width="900"
+                      height="675"
                     />
                   </div>
 
@@ -68,6 +72,8 @@
                     class="event-card__speaker-image"
                     [src]="event.image"
                     [alt]="event.speaker"
+                    loading="lazy"
+                    decoding="async"
                   />
 
                   <span class="event-card__badge">
