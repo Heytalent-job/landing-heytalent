@@ -83,7 +83,10 @@
 
   transform:
     translateX(
-      calc(-100% * var(--current-page, 0))
+      calc(
+        -100% / var(--visible-events) *
+        var(--current-index, 0)
+      )
     );
 
   transition:
