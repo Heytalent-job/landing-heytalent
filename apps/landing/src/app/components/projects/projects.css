@@ -1,83 +1,204 @@
-.projects {
-  padding-block: 3.5rem;
+/* ========================================
+   CONFIGURACIÓN GENERAL DEL CARRUSEL
+   ======================================== */
+
+:host {
+  display: block;
+  --visible-events: 1;
 }
 
-.projects h2 {
+@media (min-width: 640px) {
+  :host {
+    --visible-events: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  :host {
+    --visible-events: 3;
+  }
+}
+
+
+/* ========================================
+   SECCIÓN DE EVENTOS
+   ======================================== */
+
+.events {
+  padding-block: 4rem;
+}
+
+.events__header {
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
+.events__title {
+  margin: 0;
 
-/* ==============================
-   CONTENEDOR DE TARJETAS
-   ============================== */
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
 
-.projects__grid {
-  max-width: 1000px;
-  margin: 2rem auto 0;
+  color: var(--secondary-foreground);
+}
 
-  display: grid;
-  grid-template-columns: 1fr;
+.events__subtitle {
+  max-width: 650px;
+  margin: 0.75rem auto 0;
 
-  gap: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  color: var(--muted-foreground);
 }
 
 
-/* ==============================
-   TARJETA
-   ============================== */
+/* ========================================
+   CARRUSEL
+   ======================================== */
 
-.project-card {
+.events__carousel-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  width: 100%;
+}
+
+.events__viewport {
+  width: 100%;
+  overflow: hidden;
+
+  padding-block: 1.5rem;
+}
+
+.events__track {
+  display: flex;
+  align-items: stretch;
+
+  transform:
+    translateX(
+      calc(-100% * var(--current-page, 0))
+    );
+
+  transition:
+    transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+
+  will-change: transform;
+}
+
+.event-slide {
+  flex: 0 0 calc(100% / var(--visible-events));
+
+  min-width: calc(100% / var(--visible-events));
+
+  display: flex;
+
+  padding-inline: 0.65rem;
+}
+
+
+/* ========================================
+   TARJETA
+   ======================================== */
+
+.event-card {
   display: flex;
   flex-direction: column;
 
-  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
 
   border: 1px solid var(--border);
-  border-radius: 1.25rem;
+  border-radius: 1.5rem;
 
   background: var(--card);
+
   box-shadow: var(--shadow-card);
+
+  overflow: visible;
 
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
+.event-card:hover {
+  transform: translateY(-6px);
   box-shadow: var(--shadow-soft);
 }
 
 
-/* ==============================
-   IMAGEN + CATEGORÍA
-   ============================== */
+/* ========================================
+   ZONA VISUAL
+   ======================================== */
 
-.project-card__media {
+.event-card__visual {
   position: relative;
-  overflow: hidden;
+
+  height: 240px;
+
+  margin: 0.75rem;
+
+  overflow: visible;
 }
 
-.project-card__image {
-  width: 100%;
-  height: 13rem;
-
-  object-fit: cover;
-
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-card__image {
-  transform: scale(1.02);
-}
-
-.project-card__badge {
+.event-card__background-wrap {
   position: absolute;
 
-  left: 1rem;
-  bottom: 1rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-  padding: 0.35rem 0.75rem;
+  height: 220px;
+
+  border-radius: 1.25rem;
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+.event-card__background {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.event-card__speaker-image {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  height: 245px;
+  max-width: 95%;
+
+  object-fit: contain;
+  object-position: bottom;
+
+  z-index: 2;
+}
+
+.event-card__badge {
+  position: absolute;
+
+  left: 0.9rem;
+  bottom: 0.85rem;
+
+  z-index: 3;
+
+  padding: 0.45rem 0.9rem;
 
   border-radius: 999px;
 
@@ -86,128 +207,447 @@
 
   font-size: 0.75rem;
   font-weight: 700;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 
-/* ==============================
-   CONTENIDO
-   ============================== */
+/* ========================================
+   CUERPO DE LA TARJETA
+   ======================================== */
 
-.project-card__body {
+.event-card__body {
   display: flex;
-  flex: 1;
   flex-direction: column;
 
-  padding: 1.25rem;
-}
+  flex: 1;
 
-.project-card__title {
-  font-size: 1.15rem;
-}
-
-.project-card__description {
-  margin-top: 0.5rem;
-  margin-bottom: 1.25rem;
-
-  font-size: 0.875rem;
-  line-height: 1.5;
-
-  color: var(--muted-foreground);
+  padding: 1rem 1.25rem 1.25rem;
 }
 
 
-/* ==============================
-   FECHA / HORA / LUGAR
-   ============================== */
+/* ========================================
+   TÍTULO
+   ======================================== */
 
-.project-card__meta {
+.event-card__title {
+  margin: 0;
+
+  min-height: 4.5rem;
+
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+
+  color: var(--secondary-foreground);
+}
+
+/* ========================================
+   PONENTE
+   ======================================== */
+
+.event-card__speaker {
+  display: flex;
+  align-items: center;
+
+  gap: 0.65rem;
+
+  min-height: 3.5rem;
+
+  margin: 0 0 1rem;
+
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.35;
+
+  color: var(--secondary-foreground);
+}
+
+.event-card__speaker app-icon {
+  flex-shrink: 0;
+
+  width: 1.25rem;
+  height: 1.25rem;
+
+  color: var(--primary);
+}
+
+
+/* ========================================
+   FECHA / HORA / MODALIDAD
+   ======================================== */
+
+.event-card__meta {
+  display: grid;
+
+  grid-template-columns:
+    1.15fr
+    1.2fr
+    1fr;
+
+  align-items: center;
+
   margin-top: auto;
   padding-top: 1rem;
-
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: 0.75rem;
 
   border-top: 1px solid var(--border);
 }
 
-.project-card__meta-item {
+.event-card__meta-item {
+  display: grid;
+
+  grid-template-columns:
+    1.25rem
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  min-width: 0;
+
+  padding-inline: 0.55rem;
+}
+
+.event-card__meta-item:first-child {
+  padding-left: 0.25rem;
+}
+
+.event-card__meta-item:last-child {
+  padding-right: 0.25rem;
+}
+
+.event-card__meta-item +
+.event-card__meta-item {
+  border-left: 1px solid var(--border);
+}
+
+.event-card__meta-item app-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+
+  color: var(--primary);
+}
+
+.event-card__meta-item > div {
   display: flex;
   flex-direction: column;
 
-  gap: 0.15rem;
+  min-width: 0;
+
+  text-align: left;
 }
 
-.project-card__meta-label {
-  font-size: 0.65rem;
-  font-weight: 500;
+.event-card__meta-item strong {
+  font-size: 0.64rem;
+  font-weight: 700;
+  line-height: 1.2;
 
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  white-space: nowrap;
+
+  color: var(--secondary-foreground);
+}
+
+.event-card__meta-label {
+  margin-top: 0.15rem;
+
+  font-size: 0.56rem;
+  font-weight: 400;
+  line-height: 1.2;
 
   color: var(--muted-foreground);
 }
 
-.project-card__meta-item strong {
-  font-size: 0.75rem;
+
+/* ========================================
+   VER MÁS DETALLES
+   ======================================== */
+
+.event-card__details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 1rem;
+  padding-top: 1rem;
+
+  border-top: 1px solid var(--border);
+}
+
+.event-card__details-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+
   color: var(--secondary-foreground);
 }
 
+.event-card__details-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-/* ==============================
+  flex-shrink: 0;
+
+  width: 2.35rem;
+  height: 2.35rem;
+
+  padding: 0;
+
+  border: 3px solid var(--card);
+  border-radius: 50%;
+
+  background: var(--primary);
+  color: white;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 0 5px rgba(91, 61, 245, 0.14),
+    0 5px 12px rgba(91, 61, 245, 0.24);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.event-card__details-button app-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+
+  color: white;
+}
+
+.event-card__details-button:hover {
+  transform:
+    translateX(2px)
+    scale(1.05);
+
+  box-shadow:
+    0 0 0 6px rgba(91, 61, 245, 0.18),
+    0 7px 16px rgba(91, 61, 245, 0.3);
+}
+
+.event-card__details-button:active {
+  transform: scale(0.95);
+}
+
+.event-card__details-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+
+/* ========================================
+   FLECHAS DEL CARRUSEL
+   ======================================== */
+
+.events__nav {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.75rem;
+  height: 2.75rem;
+
+  padding: 0;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: var(--background);
+  color: var(--secondary-foreground);
+
+  cursor: pointer;
+
+  z-index: 5;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08);
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.events__nav:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+
+  transform: scale(1.06);
+
+  box-shadow: var(--shadow-soft);
+}
+
+.events__nav:active {
+  transform: scale(0.95);
+}
+
+.events__nav app-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+
+/* ========================================
    TABLET
-   ============================== */
+   ======================================== */
 
-@media (min-width: 640px) {
-  .projects__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (min-width: 640px) and (max-width: 1023px) {
+  .event-slide {
+    padding-inline: 0.5rem;
+  }
+
+  .event-card__title {
+    min-height: 5.5rem;
+  }
+
+  .event-card__speaker {
+    min-height: 3.3rem;
+  }
+
+  .event-card__meta-item strong {
+    font-size: 0.62rem;
   }
 }
 
 
-/* ==============================
-   COMPUTADORA
-   ============================== */
-
-@media (min-width: 1024px) {
-  .projects__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-
-/* ==============================
+/* ========================================
    CELULAR
-   ============================== */
+   ======================================== */
 
 @media (max-width: 639px) {
-  .project-card__image {
-    height: 190px;
+  .events {
+    padding-block: 3rem;
   }
 
-  .project-card__meta {
-    gap: 0.5rem;
+  .events__header {
+    margin-bottom: 2rem;
   }
 
-  .project-card__meta-item strong {
-    font-size: 0.7rem;
+  .events__title {
+    font-size: 1.6rem;
+  }
+
+  .events__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .events__carousel-wrapper {
+    gap: 0.35rem;
+  }
+
+  .events__nav {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .events__nav app-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .event-slide {
+    padding-inline: 0.35rem;
+  }
+
+  .event-card__visual {
+    height: 230px;
+  }
+
+  .event-card__background-wrap {
+    height: 210px;
+  }
+
+  .event-card__speaker-image {
+    height: 235px;
+  }
+
+  .event-card__body {
+    padding:
+      0.9rem
+      1rem
+      1.15rem;
+  }
+
+  .event-card__title {
+    min-height: auto;
+
+    font-size: 1rem;
+  }
+
+  .event-card__speaker {
+    min-height: auto;
+
+    margin-top: 0.9rem;
+
+    font-size: 0.9rem;
+  }
+
+  .event-card__meta {
+    grid-template-columns:
+      1.05fr
+      1.35fr
+      0.9fr;
+  }
+
+  .event-card__meta-item {
+    gap: 0.3rem;
+
+    padding-inline: 0.25rem;
+  }
+
+  .event-card__meta-item app-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .event-card__meta-item strong {
+    font-size: 0.58rem;
+  }
+
+  .event-card__meta-label {
+    font-size: 0.53rem;
+  }
+
+  .event-card__details-text {
+    font-size: 0.75rem;
+  }
+
+  .event-card__details-button {
+    width: 2.2rem;
+    height: 2.2rem;
   }
 }
 
 
-/* Accesibilidad */
+/* ========================================
+   ACCESIBILIDAD
+   ======================================== */
+
 @media (prefers-reduced-motion: reduce) {
-  .project-card,
-  .project-card__image {
+  .events__track {
     transition: none;
   }
 
-  .project-card:hover {
-    transform: none;
+  .event-card,
+  .events__nav,
+  .event-card__details-button {
+    transition: none;
   }
 
-  .project-card:hover .project-card__image {
+  .event-card:hover,
+  .events__nav:hover,
+  .event-card__details-button:hover {
     transform: none;
   }
 }
