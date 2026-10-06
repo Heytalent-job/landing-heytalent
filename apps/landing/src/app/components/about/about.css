@@ -143,15 +143,32 @@
     width: 100%;
     justify-content: center;
   }
+
+  .about__cards {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+
+  .pcard {
+    width: 100%;
+    max-width: 560px;
+  }
 }
 
-@media (min-width: 640px) {
+/* Responsive tablet */
+@media (min-width: 640px) and (max-width: 1023px) {
   .about__cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+
+  .pcard {
+    width: 100%;
+    max-width: 560px;
   }
 
   .about__link {
-    grid-column: span 2;
+    grid-column: span 1;
   }
 }
 

@@ -1,105 +1,454 @@
+/* ========================================
+   SECCIÓN CONTACTO
+   ======================================== */
+
 .contact {
   background: var(--background);
 }
 
+
+/* ========================================
+   ENCABEZADO
+   ======================================== */
+
 .contact__header {
-  max-width: 38rem;
-  margin: 0 auto 2rem;
+  max-width: 46rem;
+
+  margin: 0 auto 3rem;
+
   text-align: center;
 }
 
 .contact__title {
   margin-top: 0.5rem;
-}
 
-.contact__description {
-  margin-top: 0.75rem;
-  color: var(--muted-foreground);
-}
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
 
-.contact__card {
-  max-width: 46rem;
-  margin: 0 auto;
-  padding: 1.5rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-}
-
-.contact__form {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.contact__grid {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.contact__field {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.contact__field label {
-  font-size: 0.875rem;
-  font-weight: 500;
   color: var(--secondary-foreground);
 }
 
-.contact__field input,
-.contact__field textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--input);
-  border-radius: 0.625rem;
-  background: var(--background);
-  color: var(--foreground);
-  font: inherit;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
+.contact__description {
+  max-width: 42rem;
 
-.contact__field input {
-  height: 2.75rem;
-}
+  margin: 0.75rem auto 0;
 
-.contact__field textarea {
-  resize: vertical;
-  min-height: 8rem;
-}
+  font-size: 0.95rem;
+  line-height: 1.6;
 
-.contact__field input::placeholder,
-.contact__field textarea::placeholder {
   color: var(--muted-foreground);
 }
 
-.contact__field input:focus,
-.contact__field textarea:focus {
-  border-color: var(--primary);
-  outline: none;
-  box-shadow: 0 0 0 3px var(--secondary-40);
+
+/* ========================================
+   TARJETAS
+   ======================================== */
+
+.contact__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 2rem;
+
+  max-width: 64rem;
+
+  margin-inline: auto;
 }
 
-.contact__button {
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   width: 100%;
-  margin-top: 0.25rem;
+
+  padding: 2rem 2rem 1.5rem;
+
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+
+  background: var(--card);
+
+  box-shadow: var(--shadow-card);
+
+  text-align: center;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-@media (min-width: 640px) {
-  .contact__card {
-    padding: 2rem;
+.contact-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* ========================================
+   FOTO + FONDO
+   ======================================== */
+
+.contact-card__photo-wrap {
+  position: relative;
+
+  width: 10rem;
+  height: 10rem;
+  min-width: 10rem;
+  min-height: 10rem;
+
+  aspect-ratio: 1 / 1;
+
+  margin-bottom: 1.25rem;
+
+  border: 2px solid var(--border);
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  background: var(--card);
+
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.08);
+
+  flex-shrink: 0;
+}
+
+
+/* Fondo morado */
+
+.contact-card__photo-background {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url('/images/contact/fondo-contact.webp');
+  background-size: 155%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 50%;
+
+  z-index: 1;
+}
+
+
+/* Persona */
+
+.contact-card__photo {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 50%;
+
+  z-index: 2;
+}
+
+
+/* ========================================
+   CONTENIDO
+   ======================================== */
+
+.contact-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.contact-card__name {
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+
+  color: var(--secondary-foreground);
+}
+
+
+/* Cargo */
+
+.contact-card__role {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 0.5rem;
+
+  padding: 0.35rem 0.9rem;
+
+  border-radius: 999px;
+
+  background: var(--secondary-40);
+  color: var(--primary);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+
+/* Descripción */
+
+.contact-card__description {
+  max-width: 22rem;
+
+  margin: 1rem auto 1.25rem;
+
+  font-size: 0.9rem;
+  line-height: 1.55;
+
+  color: var(--muted-foreground);
+}
+
+
+/* ========================================
+   DIVISOR
+   ======================================== */
+
+.contact-card__divider {
+  width: 100%;
+
+  margin-top: 0.5rem;
+  margin-bottom: 1.1rem;
+
+  border-top: 1px solid var(--border);
+}
+
+/* ========================================
+   REDES
+   ======================================== */
+
+.contact-card__socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.9rem;
+}
+
+.contact-card__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3rem;
+  height: 3rem;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: var(--card);
+  color: var(--secondary-foreground);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.05);
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-card__social app-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.contact-card__social:hover {
+  color: var(--primary);
+
+  border-color: var(--primary);
+
+  background: var(--primary-soft);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card__social:active {
+  transform: scale(0.95);
+}
+
+.contact-card__social:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   WHATSAPP GENERAL
+   ======================================== */
+
+.contact__community {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  max-width: 42rem;
+
+  margin: 2rem auto 0;
+
+  font-size: 0.8rem;
+  line-height: 1.5;
+
+  color: var(--muted-foreground);
+
+  text-align: center;
+}
+
+.contact__community app-icon {
+  flex-shrink: 0;
+
+  width: 1.1rem;
+  height: 1.1rem;
+
+  color: var(--primary);
+}
+
+.contact__community p {
+  margin: 0;
+}
+
+.contact__community a {
+  font-weight: 600;
+
+  color: var(--primary);
+
+  text-decoration: none;
+}
+
+.contact__community a:hover {
+  text-decoration: underline;
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+
+  .contact__cards {
+    gap: 1.25rem;
   }
 
-  .contact__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .contact-card {
+    padding: 1.5rem;
   }
 
-  .contact__button {
-    width: auto;
-    justify-self: start;
-    padding-inline: 1.5rem;
+  .contact-card__photo-wrap {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .contact-card__name {
+    font-size: 1.2rem;
+  }
+}
+
+
+/* ========================================
+   CELULAR
+   ======================================== */
+
+@media (max-width: 639px) {
+
+  .contact__header {
+    margin-bottom: 2rem;
+  }
+
+  .contact__title {
+    font-size: 1.6rem;
+  }
+
+  .contact__description {
+    font-size: 0.9rem;
+  }
+
+
+  .contact__cards {
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 1.25rem;
+
+    max-width: 24rem;
+  }
+
+
+  .contact-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+
+  .contact-card__photo-wrap {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+
+  .contact-card__name {
+    font-size: 1.15rem;
+  }
+
+
+  .contact-card__description {
+    font-size: 0.85rem;
+  }
+
+
+  .contact-card__social {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+
+  .contact__community {
+    margin-top: 1.5rem;
+
+    padding-inline: 0.5rem;
+
+    font-size: 0.75rem;
+  }
+}
+
+
+/* ========================================
+   ACCESIBILIDAD
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .contact-card,
+  .contact-card__social {
+    transition: none;
+  }
+
+  .contact-card:hover,
+  .contact-card__social:hover {
+    transform: none;
   }
 }

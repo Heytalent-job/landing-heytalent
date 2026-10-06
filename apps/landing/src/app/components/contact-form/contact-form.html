@@ -1,67 +1,180 @@
 <section class="contact section" id="contacto">
   <div class="container">
-    <div class="contact__header">
-      <span class="eyebrow">Contacto</span>
+
+    <header class="contact__header">
+      <p class="eyebrow">CONTÁCTANOS</p>
 
       <h2 class="contact__title">
-        ¿Tienes alguna pregunta?
+        Estamos para ayudarte
       </h2>
 
       <p class="contact__description">
-        Estamos aquí para ayudarte. Déjanos tus datos y cuéntanos
-        en qué podemos ayudarte.
+        Escríbenos: te orientamos en tu búsqueda de empleo
+        y acompañamos a las organizaciones que quieren sumarse.
       </p>
-    </div>
+    </header>
 
-    <div class="contact__card">
-      <form class="contact__form">
-        <div class="contact__grid">
 
-          <div class="contact__field">
-            <label for="name">Nombre</label>
-            <input
-              id="name"
-              type="text"
-              placeholder="Tu nombre"
-            />
-          </div>
+    <div class="contact__cards">
 
-          <div class="contact__field">
-            <label for="email">Correo electrónico</label>
-            <input
-              id="email"
-              type="email"
-              placeholder="nombre@correo.com"
-            />
-          </div>
+      <!-- TANIA -->
 
-        </div>
+      <article class="contact-card">
 
-        <div class="contact__field">
-          <label for="subject">Asunto</label>
-          <input
-            id="subject"
-            type="text"
-            placeholder="¿En qué podemos ayudarte?"
+        <div class="contact-card__photo-wrap">
+          <div class="contact-card__photo-background"></div>
+
+          <img
+            class="contact-card__photo"
+            src="/images/contact/tania.webp"
+            alt="Tania"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
-        <div class="contact__field">
-          <label for="message">Mensaje</label>
-          <textarea
-            id="message"
-            rows="5"
-            placeholder="Escribe tu mensaje aquí..."
-          ></textarea>
+        <div class="contact-card__content">
+
+          <h3 class="contact-card__name">
+            Tania
+          </h3>
+
+          <span class="contact-card__role">
+            Orientadora Profesional
+          </span>
+
+          <p class="contact-card__description">
+            Asesorías y orientación para tu desarrollo profesional.
+          </p>
+
+          <div class="contact-card__divider"></div>
+
+          <div class="contact-card__socials">
+
+            <a
+              class="contact-card__social"
+              [href]="taniaInstagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de Tania"
+            >
+              <app-icon name="instagram" />
+            </a>
+
+            <a
+              class="contact-card__social"
+              [href]="taniaLinkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn de Tania"
+            >
+              <app-icon name="linkedin" />
+            </a>
+
+            <a
+              class="contact-card__social"
+              [href]="taniaWhatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp de Tania"
+            >
+              <app-icon name="message-circle" />
+            </a>
+
+          </div>
+
+        </div>
+      </article>
+
+
+      <!-- ADOLFO -->
+
+      <article class="contact-card">
+
+        <div class="contact-card__photo-wrap">
+          <div class="contact-card__photo-background"></div>
+
+          <img
+            class="contact-card__photo"
+            src="/images/contact/adolfo.webp"
+            alt="Adolfo"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
-        <button
-          class="btn btn--primary contact__button"
-          type="button"
-        >
-          Enviar mensaje
-        </button>
-      </form>
+        <div class="contact-card__content">
+
+          <h3 class="contact-card__name">
+            Adolfo
+          </h3>
+
+          <span class="contact-card__role">
+            Contacto para aliados
+          </span>
+
+          <p class="contact-card__description">
+            Organizaciones y aliados que quieran colaborar con HeyTalent.
+          </p>
+
+          <div class="contact-card__divider"></div>
+
+          <div class="contact-card__socials">
+
+            <a
+              class="contact-card__social"
+              [href]="adolfoInstagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de Adolfo"
+            >
+              <app-icon name="instagram" />
+            </a>
+
+            <a
+              class="contact-card__social"
+              [href]="adolfoLinkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn de Adolfo"
+            >
+              <app-icon name="linkedin" />
+            </a>
+
+            <a
+              class="contact-card__social"
+              [href]="adolfoWhatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp de Adolfo"
+            >
+              <app-icon name="message-circle" />
+            </a>
+
+          </div>
+
+        </div>
+      </article>
+
     </div>
+
+
+    <div class="contact__community">
+
+      <app-icon name="message-circle" />
+
+      <p>
+        También puedes unirte a nuestra comunidad de
+        <a
+          [href]="communityWhatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>.
+      </p>
+
+    </div>
+
   </div>
 </section>
