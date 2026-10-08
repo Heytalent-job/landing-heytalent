@@ -22,8 +22,12 @@
 .partners__header {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   gap: 0.5rem;
   margin-bottom: 3rem;
+
+  text-align: center;
 }
 
 .partners__title {
@@ -35,10 +39,14 @@
 }
 
 .partners__subtitle {
-  font-size: 1.05rem;
-  color: var(--muted-foreground);
   max-width: 44rem;
+
+  margin-inline: auto;
+
+  font-size: 1.05rem;
   line-height: 1.5;
+
+  color: var(--muted-foreground);
 }
 
 /* Envoltorio horizontal del carrusel */
