@@ -1,6 +1,9 @@
 {
   "name": "@heytalent/landing",
   "version": "0.0.0",
+  "engines": {
+    "node": "22.x"
+  },
   "private": true,
   "description": "Landing pública de Hey Talent (heytalent.com).",
   "scripts": {

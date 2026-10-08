@@ -4,6 +4,9 @@
   "private": true,
   "description": "Monorepo de Hey Talent: landing, frontend de producto y backend.",
   "packageManager": "npm@10.9.2",
+  "engines": {
+    "node": "22.x"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
