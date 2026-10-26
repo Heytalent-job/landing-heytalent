@@ -159,22 +159,39 @@
     </div>
 
 
-    <div class="contact__community">
+    <aside class="community">
 
-      <app-icon name="message-circle" />
+      <div class="community__glow community__glow--a" aria-hidden="true"></div>
+      <div class="community__glow community__glow--b" aria-hidden="true"></div>
 
-      <p>
-        También puedes unirte a nuestra comunidad de
-        <a
-          [href]="communityWhatsapp"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          WhatsApp
-        </a>.
-      </p>
+      <div class="community__text">
 
-    </div>
+        <p class="community__eyebrow">
+          <app-icon name="message-circle" />
+          Comunidad Hey Talent
+        </p>
+
+        <h3 class="community__title">
+          No busques trabajo en solitario
+        </h3>
+
+        <p class="community__subtitle">
+          Entra al grupo de WhatsApp y entérate de las vacantes y talleres antes que nadie.
+        </p>
+
+      </div>
+
+      <a
+        class="community__cta"
+        [href]="communityWhatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <app-icon name="whatsapp" />
+        Unirme ahora
+      </a>
+
+    </aside>
 
   </div>
 </section>

@@ -301,48 +301,166 @@
    WHATSAPP GENERAL
    ======================================== */
 
-.contact__community {
+/* ---- CTA de comunidad: banda con degradado ---- */
+
+.community {
+  position: relative;
+  overflow: hidden;
+
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 2.5rem;
 
+  margin-top: 3.5rem;
+  padding: 2.75rem 3rem;
+
+  border-radius: var(--radius);
+  background: linear-gradient(
+    110deg,
+    oklch(48% 0.2 279) 0%,
+    var(--primary) 48%,
+    oklch(66% 0.17 281) 100%
+  );
+  box-shadow: var(--shadow-soft);
+}
+
+/* Círculos de luz: decorativos, nunca por encima del texto. */
+.community__glow {
+  position: absolute;
+  border-radius: 50%;
+  background: oklch(100% 0 0 / 0.09);
+  pointer-events: none;
+}
+
+.community__glow--a {
+  top: -4.5rem;
+  right: 7.5rem;
+  width: 14rem;
+  height: 14rem;
+}
+
+.community__glow--b {
+  bottom: -5.5rem;
+  right: -2rem;
+  width: 12rem;
+  height: 12rem;
+  background: oklch(100% 0 0 / 0.07);
+}
+
+.community__text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 34rem;
+}
+
+.community__eyebrow {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
 
-  max-width: 42rem;
-
-  margin: 2rem auto 0;
-
   font-size: 0.8rem;
-  line-height: 1.5;
-
-  color: var(--muted-foreground);
-
-  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: oklch(92% 0.05 285);
 }
 
-.contact__community app-icon {
+.community__eyebrow app-icon {
+  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.community__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--primary-foreground);
+}
+
+.community__subtitle {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: oklch(92% 0.05 285);
+}
+
+.community__cta {
+  position: relative;
   flex-shrink: 0;
 
-  width: 1.1rem;
-  height: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
 
-  color: var(--primary);
-}
+  /* 44px mínimos de área pulsable. */
+  min-height: 3.25rem;
+  padding: 1rem 2rem;
 
-.contact__community p {
-  margin: 0;
-}
+  border-radius: 999px;
+  background: var(--background);
+  color: oklch(42% 0.21 279);
 
-.contact__community a {
-  font-weight: 600;
-
-  color: var(--primary);
-
+  font-size: 1.05rem;
+  font-weight: 700;
   text-decoration: none;
+
+  box-shadow: 0 14px 30px -14px oklch(20% 0.1 285 / 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contact__community a:hover {
-  text-decoration: underline;
+.community__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px -14px oklch(20% 0.1 285 / 0.7);
+}
+
+/* Algo mayor que un icono de trazo: el logotipo es macizo y tiene más detalle. */
+.community__cta app-icon {
+  flex-shrink: 0;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+@media (max-width: 767px) {
+  .community {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .community__title {
+    font-size: 1.6rem;
+  }
+
+  .community__subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* A ancho completo: en móvil el botón es el final natural de la lectura. */
+  .community__cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .community__glow--a {
+    right: -3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .community__cta {
+    transition: none;
+  }
+
+  .community__cta:hover {
+    transform: none;
+  }
 }
 
 
@@ -423,15 +541,6 @@
   .contact-card__social {
     width: 2.75rem;
     height: 2.75rem;
-  }
-
-
-  .contact__community {
-    margin-top: 1.5rem;
-
-    padding-inline: 0.5rem;
-
-    font-size: 0.75rem;
   }
 }
 
