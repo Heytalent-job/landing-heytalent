@@ -106,6 +106,14 @@
                     {{ event.category }}
                   </span>
 
+                  <!-- Distintivo de evento ya celebrado -->
+
+                  @if (event.finished) {
+                    <span class="event-card__status">
+                      Finalizado
+                    </span>
+                  }
+
 
                 </div>
 

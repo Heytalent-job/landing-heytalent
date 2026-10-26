@@ -21,6 +21,8 @@ interface EventCard {
   category: string;
   date: string;
   modality: string;
+  /** Evento ya celebrado: muestra el distintivo "Finalizado". Los próximos lo omiten. */
+  finished?: boolean;
 }
 
 
@@ -50,6 +52,7 @@ protected readonly events: EventCard[] = [
     category: 'Webinar',
     date: '02/08/26',
     modality: 'Virtual',
+    finished: true,
   },
 
   {
@@ -60,6 +63,7 @@ protected readonly events: EventCard[] = [
     category: 'Webinar',
     date: '19/03/26',
     modality: 'Virtual',
+    finished: true,
   },
 
   {
@@ -70,6 +74,7 @@ protected readonly events: EventCard[] = [
     category: 'Taller',
     date: '22/08/26',
     modality: 'Presencial',
+    finished: true,
   },
 
   {
@@ -80,6 +85,7 @@ protected readonly events: EventCard[] = [
     category: 'Webinar',
     date: '15/06/26',
     modality: 'Virtual',
+    finished: true,
   },
 ];
 
