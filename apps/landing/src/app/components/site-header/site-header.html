@@ -5,6 +5,25 @@
       <span class="brand__name">{{ brand.name }}</span>
     </a>
 
+    <!-- Navegación de escritorio — visible a partir de `lg` -->
+    <nav class="nav" aria-label="Secciones de la página">
+      @for (link of navLinks; track link.href) {
+        <a class="nav__link" [href]="link.href">{{ link.label }}</a>
+      }
+    </nav>
+
+    <!-- Botón del menú — visible por debajo de `lg` -->
+    <button
+      class="header__toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="menu-movil"
+      [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+    >
+      <app-icon [name]="menuOpen() ? 'x' : 'menu'" />
+    </button>
+
     <!-- Acciones de sesión ocultadas temporalmente:
     <div class="header__actions">
       <a class="btn btn--ghost btn--pill" href="/cuenta">Iniciar sesión</a>
@@ -12,5 +31,14 @@
     </div>
     -->
   </div>
-</header>
 
+  @if (menuOpen()) {
+    <nav class="menu" id="menu-movil" aria-label="Secciones de la página">
+      <div class="menu__links">
+        @for (link of navLinks; track link.href) {
+          <a class="nav__link" [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+        }
+      </div>
+    </nav>
+  }
+</header>

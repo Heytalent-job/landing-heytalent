@@ -88,20 +88,33 @@
 }
 
 @media (min-width: 1024px) {
+  /* Tres columnas (marca · nav · hueco) para que el nav quede centrado en la
+     barra, sin que lo desplace el ancho de la marca. */
+  .header__bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
   .nav {
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    grid-column: 2;
+    justify-self: center;
   }
 
   .nav__link {
     padding: 0.5rem 0.5rem;
   }
 
+  /* Al reactivar las acciones de sesión ocupan la 3ª columna, pegadas al borde. */
   .header__actions {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    grid-column: 3;
+    justify-self: end;
   }
 
   .header__toggle,

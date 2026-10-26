@@ -55,6 +55,9 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  /* El header es sticky (~4rem): reservamos su alto para que al saltar a una
+     ancla el título de la sección no quede escondido debajo. */
+  scroll-padding-top: 5rem;
 }
 
 body {

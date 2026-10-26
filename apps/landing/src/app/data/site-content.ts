@@ -27,7 +27,12 @@ export const BRAND = {
   tagline: 'Networking y búsqueda de empleo para talento joven: conecta, postula y crece.',
 } as const;
 
-export const NAV_LINKS: NavLink[] = [];
+export const NAV_LINKS: NavLink[] = [
+  { label: 'Quiénes somos', href: '#nosotros' },
+  { label: 'Eventos', href: '#eventos' },
+  { label: 'Aliados', href: '#aliados' },
+  { label: 'Contacto', href: '#contacto' },
+];
 
 export const HERO = {
   eyebrow: 'Networking + Empleo',
