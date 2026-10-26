@@ -29,11 +29,16 @@
           <div class="partner-slide">
             <div class="partner-slide__logo-container">
               @if (partner.logo) {
+                <!-- Sin `lazy`: los slides fuera del viewport del carrusel no
+                     cuentan como visibles, así que el navegador no descargaba el
+                     logo hasta que la flecha lo traía a cuadro (parpadeo al pasar
+                     rápido). Son 8 logos de ~147 KB en total y se repiten 3 veces
+                     en la pista, así que una sola descarga sirve para todo. -->
                 <img
                   class="partner-slide__logo"
                   [src]="partner.logo"
                   [alt]="partner.alt || partner.name"
-                  loading="lazy"
+                  decoding="async"
                 />
               } @else {
                 <div class="partner-slide__placeholder">

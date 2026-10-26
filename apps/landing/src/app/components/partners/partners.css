@@ -1,15 +1,24 @@
 :host {
   display: block;
-  --visible-items: 1.5;
+  /* Enteros a propósito: con valores fraccionarios (1.5, 2.5) el último slide
+     queda cortado por la mitad y el conjunto se ve descentrado, sobre todo en
+     móvil, donde además el trozo sobrante choca con la flecha. */
+  --visible-items: 1;
 }
 
 @media (min-width: 640px) {
   :host {
-    --visible-items: 2.5;
+    --visible-items: 2;
   }
 }
 
 @media (min-width: 1024px) {
+  :host {
+    --visible-items: 3;
+  }
+}
+
+@media (min-width: 1280px) {
   :host {
     --visible-items: 4;
   }
@@ -205,6 +214,24 @@
 .carousel-nav app-icon {
   width: 1.35rem;
   height: 1.35rem;
+}
+
+/* En móvil las flechas y sus separaciones se comían ~120px de ancho, dejando el
+   logo apretado contra ellas. Se reducen para devolverle sitio al slide. */
+@media (max-width: 639px) {
+  .partners__carousel-wrapper {
+    gap: 0.5rem;
+  }
+
+  .carousel-nav {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .carousel-nav app-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
